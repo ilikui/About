@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tag2 on TechLab Hugo Theme</title>
-    <link>http://example.org/tags/tag2/</link>
-    <description>Recent content in tag2 on TechLab Hugo Theme</description>
+    <title>tag2 on Person</title>
+    <link>https://yueya.netlify.app/tags/tag2/</link>
+    <description>Recent content in tag2 on Person</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Aug 2022 02:41:08 +0000</lastBuildDate>
-    <atom:link href="http://example.org/tags/tag2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yueya.netlify.app/tags/tag2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Semper semper tortor</title>
-      <link>http://example.org/section2/life/article2/</link>
+      <link>https://yueya.netlify.app/section2/life/article2/</link>
       <pubDate>Mon, 29 Aug 2022 02:41:08 +0000</pubDate>
-      <guid>http://example.org/section2/life/article2/</guid>
+      <guid>https://yueya.netlify.app/section2/life/article2/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum bibendum ultrices. Quisque eget quam iaculis, elementum neque eget, maximus dui. Phasellus vitae vehicula nibh. Sed fermentum neque a orci mollis, sed mattis nulla mollis. Aenean interdum, urna a condimentum blandit, urna enim lacinia turpis, vel mattis orci odio at quam. Nulla pulvinar interdum elit, ac porta sapien suscipit vitae. Cras rutrum eros tellus, id venenatis metus consectetur at. Donec vestibulum lectus aliquet ante porttitor, sed malesuada libero tempus.</description>
     </item>
     <item>
       <title>Semper semper tortor</title>
-      <link>http://example.org/section3/life/article2/</link>
+      <link>https://yueya.netlify.app/section3/life/article2/</link>
       <pubDate>Mon, 29 Aug 2022 02:41:08 +0000</pubDate>
-      <guid>http://example.org/section3/life/article2/</guid>
+      <guid>https://yueya.netlify.app/section3/life/article2/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum bibendum ultrices. Quisque eget quam iaculis, elementum neque eget, maximus dui. Phasellus vitae vehicula nibh. Sed fermentum neque a orci mollis, sed mattis nulla mollis. Aenean interdum, urna a condimentum blandit, urna enim lacinia turpis, vel mattis orci odio at quam. Nulla pulvinar interdum elit, ac porta sapien suscipit vitae. Cras rutrum eros tellus, id venenatis metus consectetur at. Donec vestibulum lectus aliquet ante porttitor, sed malesuada libero tempus.</description>
     </item>
   </channel>
