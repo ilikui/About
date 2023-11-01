@@ -1,6 +1,6 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'TechLab Hugo Theme'
+title = 'Persopn Blog'
 theme = "techlab"
 hasCJKLanguage = true
 
