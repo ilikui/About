@@ -1,6 +1,6 @@
 baseURL = 'https://yueya.netlify.app/'
 languageCode = 'en-us'
-title = 'Persopn Blog'
+title = 'yueya'
 theme = "techlab"
 hasCJKLanguage = true
 
@@ -19,7 +19,7 @@ hasCJKLanguage = true
   weight = 3
 
 [params]
-  description = "This is the sample site of TechLab Hugo Theme. This theme uses the Light Nord color scheme and targets simplicity."
+  description = "This is a yueya blog"
   includeFooter = true
   [params.social]
     Email = ""
