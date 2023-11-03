@@ -10,4 +10,5 @@ display: false
 
 
 * [RSS](https://rssme.netlify.app/)
+* [hugo](https://hugo.aiaide.com/)
 
