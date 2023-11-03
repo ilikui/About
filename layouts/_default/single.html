@@ -8,8 +8,7 @@
       </div>
     <aside id="meta">
         <div>
-        <!-- <h5 id="date"> {{ .Date | time.Format ":date_medium" }} </h5> -->
-		<span id="date"> {{ .Date | time.Format ":date_full" }} </span>
+        <h5 id="date"> {{ .Date | time.Format ":date_medium" }} </h5>
         {{ with .Params.tags }}
           [
             {{ range . }}
