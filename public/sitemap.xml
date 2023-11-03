@@ -2,10 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://yueya.netlify.app/section1/</loc>
+    <lastmod>2022-08-29T00:23:49+00:00</lastmod>
+  </url><url>
+    <loc>https://yueya.netlify.app/section1/tech/</loc>
+  </url><url>
+    <loc>https://yueya.netlify.app/section1/life/</loc>
+  </url><url>
+    <loc>https://yueya.netlify.app/</loc>
+    <lastmod>2022-08-29T00:23:49+00:00</lastmod>
+  </url><url>
     <loc>https://yueya.netlify.app/examples/</loc>
   </url><url>
     <loc>https://yueya.netlify.app/tags/</loc>
-  </url><url>
-    <loc>https://yueya.netlify.app/</loc>
   </url>
 </urlset>
