@@ -6,6 +6,21 @@
     <description>Recent content in Tags on 月牙博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 29 Aug 2022 02:41:08 +0000</lastBuildDate>
     <atom:link href="https://yueya.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tag1</title>
+      <link>https://yueya.netlify.app/tags/tag1/</link>
+      <pubDate>Mon, 29 Aug 2022 02:41:08 +0000</pubDate>
+      <guid>https://yueya.netlify.app/tags/tag1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tag2</title>
+      <link>https://yueya.netlify.app/tags/tag2/</link>
+      <pubDate>Mon, 29 Aug 2022 02:41:08 +0000</pubDate>
+      <guid>https://yueya.netlify.app/tags/tag2/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

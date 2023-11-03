@@ -1,7 +1,7 @@
 ---
 title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 date: 2022-08-29T02:37:33Z
-draft: true
+draft: false
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae dui nunc. Mauris feugiat tincidunt arcu, eu faucibus neque pretium nec. Mauris ut mi orci. Nulla sit amet risus id urna pharetra lacinia. Quisque et elit diam. Vestibulum suscipit euismod ultrices. Donec blandit lacinia magna at convallis.
 
