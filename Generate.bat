@@ -1,1 +1,1 @@
-hugo -D
+hugo --buildFuture
