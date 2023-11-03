@@ -22,7 +22,7 @@ hasCJKLanguage = true
   description = "月牙博客"
   includeFooter = true
   [params.social]
-    Email = ""
+    Email = "vlikuiv@163.com"
     Github = "https://github.com/ilikui"
     Bilibili = ""
     Linkedin = ""
