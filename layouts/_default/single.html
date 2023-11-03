@@ -1,12 +1,12 @@
 {{ define "main" }}
-<head>
+<main class="main_section">
+	<head>
     <meta charset="utf-8">
     <base href="{{ .Site.BaseURL }}">
     <title>{{ .Site.Title }}</title>
     <link rel="canonical" href="{{ .Permalink }}">
     <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-</head>
-<main class="main_section">
+	</head>
     <h2 id="title">{{ .Title }}</h2>
       <div>
         <article id="content">
