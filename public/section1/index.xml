@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>美好的事情即将发生 on 月牙博客</title>
-    <link>https://yueya.netlify.app/section1/</link>
+    <link>https://me.zzek.cn/section1/</link>
     <description>Recent content in 美好的事情即将发生 on 月牙博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Aug 2022 00:23:49 +0000</lastBuildDate>
-    <atom:link href="https://yueya.netlify.app/section1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://me.zzek.cn/section1/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

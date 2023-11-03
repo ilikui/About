@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>月牙博客</title>
-    <link>https://yueya.netlify.app/section2/tech/</link>
+    <link>https://me.zzek.cn/section2/tech/</link>
     <description>Recent content on 月牙博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://yueya.netlify.app/section2/tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://me.zzek.cn/section2/tech/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -1,4 +1,4 @@
-baseURL = 'https://yueya.netlify.app/'
+baseURL = 'https://me.zzek.cn'
 languageCode = 'en-us'
 title = '月牙博客'
 theme = "techlab"
