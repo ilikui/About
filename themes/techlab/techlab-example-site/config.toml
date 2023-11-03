@@ -23,7 +23,7 @@ hasCJKLanguage = true
   includeFooter = true
   [params.social]
     Email = ""
-    Github = "https://github.com/sefeng211/techlab-hugo-theme"
+    Github = "https://github.com/ilikui"
     Bilibili = ""
     Linkedin = ""
 
