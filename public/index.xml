@@ -9,6 +9,13 @@
     <lastBuildDate>Fri, 03 Nov 2023 12:40:57 +0800</lastBuildDate>
     <atom:link href="https://yueya.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Hello</title>
+      <link>https://yueya.netlify.app/hello/</link>
+      <pubDate>Fri, 03 Nov 2023 12:45:29 +0800</pubDate>
+      <guid>https://yueya.netlify.app/hello/</guid>
+      <description>这个是测试</description>
+    </item>
+    <item>
       <title>My First Post</title>
       <link>https://yueya.netlify.app/posts/my-first-post/</link>
       <pubDate>Fri, 03 Nov 2023 12:40:57 +0800</pubDate>
