@@ -1,1 +1,1 @@
-hugo --D
+hugo -D
