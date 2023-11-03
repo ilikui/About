@@ -1,0 +1,1 @@
+hugo new content\section1\life\life.md
