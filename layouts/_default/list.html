@@ -17,7 +17,7 @@
 
     {{ range $files }}
       <li>
-        <span id="date"> {{ .Date | time.Format ":date_medium" }} </span>
+        <!-- <span id="date"> {{ .Date | time.Format ":date_medium" }} </span> -->
         <a href="{{.RelPermalink}}">{{.Title}}</a>
       </li>
     {{ end}}
