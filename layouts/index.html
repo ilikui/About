@@ -37,7 +37,7 @@
   <div>
       <!-- Loop through top level sections !-->
       {{  range .Site.Sections }}
-        {{ if not (isset .Params "display") }}
+        {{ if  (isset .Params "display") }}
           <h3 class="top_section_title">{{ .Title }}</h3>
           <p class="outer_section_description"> {{ .Description }} </p>
           {{/* inner sections can use weight to re-order */}}
