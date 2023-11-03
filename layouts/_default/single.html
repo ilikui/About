@@ -9,7 +9,7 @@
     <aside id="meta">
         <div>
         <!-- <h5 id="date"> {{ .Date | time.Format ":date_medium" }} </h5> -->
-		    <h5 id="date"> {{ .Date | time.Format | default "2006-01-02" }} </h5>
+		   <!--  <h5 id="date"> {{ .Date | time.Format | default "2006-01-02" }} </h5> -->
         {{ with .Params.tags }}
           [
             {{ range . }}
