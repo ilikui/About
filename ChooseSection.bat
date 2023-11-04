@@ -17,56 +17,65 @@ ECHO.
 ECHO.                       4  退   出
 ECHO.
 ECHO.
-ECHO.
-echo.                请输入选择项目的序号：
-set /p  ID=
+ECHO.                       
+set /p  ID= 请输入选择项目的序号：
 if "%id%"=="1"  goto cmd1
 
 if "%id%"=="2" goto cmd2
 
 if "%id%"=="3" goto cmd3
 
-IF "%id%"=="4"  exit
-PAUSE
 
 :cmd1
 color 0b
-echo 执行命令a
-echo 进入section1
+echo 执行命令
+echo 进入section
 
-echo  1.life
-echo  2.tech
-echo.                请输入选择项目的序号：
-set /p  ID=
+echo  1.section1
+echo  2.section2
+echo  3.section3
+               
+set /p  ID=请输入选择项目的序号：
 if "%id%"=="1"  goto cmdsection1
 
-if "%id%"=="2" goto cmdsection2
+if "%id%"=="2"  goto cmdsection2
 
-if "%id%"=="3" goto cmdsection3
+if "%id%"=="3"  goto cmdsection3
 
-IF "%id%"=="4"  exit
-PAUSE
-goto MENU
 
 :cmdsection1
 
+
 echo  1.life
 echo  2.tech
-
+echo  3.km
+echo  4.exit
 echo  ######################
+
 set /p  category=请输入分类:
 
+if %category%=="1" goto createlife
 
-if %category% == "1" goto createlife
+if %category%=="2" goto createtech
 
-if %category% == "2" goto createtech
+if %category%=="3" goto createkm
+
+
+
 :createlife
+
 set /p  content=请输入标题:
 hugo new content\section1\life\%content%
+
 :createtech
 
 set /p  content=请输入标题:
 hugo new content\section1\tech\%content%
+
+:createkm
+set /p  content=请输入标题:
+hugo new content\section1\km\%content%
+
 
 :cmdsection2
 
