@@ -1,13 +1,17 @@
-
 {{ define "main" }}
 <main class="main_section">
-{{ partial "head.html" (dict "menuID" "main" "page" .) }}
+	{{ $baseurl := .Site.BaseURL }}
+	<a  href="{{.Site.BaseURL}}">首页</a>
+	<a  href="{{$baseurl}}/all-posts">文章列表</a>
+	<a  href="{{$baseurl}}/about">关于</a>
+  
     <h2 id="title">{{ .Title }}</h2>
       <div>
         <article id="content">
            {{ .Content }}
         </article>
       </div>
+
     <aside id="meta">
         <div>
          <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
@@ -21,5 +25,9 @@
         {{ end }}
         </div>
     </aside>
+	<div class="post-comment">
+    <!-- 加入评论功能 -->
+    {{ partial "comment.html" . }}
+</div>
 </main>
 {{ end }}

@@ -1,5 +1,8 @@
 {{ define "main" }}
 <main class="main_section">
+  {{ $baseurl := .Site.BaseURL }}
+  <a  href="{{.Site.BaseURL}}">首页</a>
+  <a  href="{{$baseurl}}/about">关于</a>
   <ul class="all-posts">
   {{range .Site.RegularPages}}
     <li>

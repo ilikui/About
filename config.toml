@@ -7,13 +7,13 @@ hasCJKLanguage = true
 
 [menu]
 [[menu.main]]
-  name = 'About'
-  url = '/about/'
-  weight = 2
-[[menu.main]]
-  name = 'All Posts'
+  name = '文章列表'
   url = '/all-posts/'
   weight = 1
+[[menu.main]]
+  name = '关于'
+  url = '/about/'
+  weight = 2
 [[menu.main]]
   name = 'RSS'
   url = '/index.xml'
@@ -27,7 +27,16 @@ hasCJKLanguage = true
     Github = "https://github.com/ilikui"
     Bilibili = ""
     Linkedin = ""
+  [params.valine]
+    enable = true
+    appId = '9K4ZO5juSBzjbjlOaMY3vr6y-MdYXbMMI'
+    appKey = 'AD7LdfH3AhSDumMbN5Sma4k9'
+    notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
+    verify = false # Verification code
+    avatar = 'mm'
+    placeholder = '说点什么吧...'
+    visitor = true	
 
 [taxonomies]
   tag = "tags"
-  example = "examples"
+  example = "life"
