@@ -6,7 +6,7 @@
   <ul class="all-posts">
   {{range .Site.RegularPages}}
     <li>
-      <span id="date"> {{ .Date | time.Format ":date_medium" }} </span>
+      <span id="date"> {{ .Date.Format "Mon Jan 2, 2006" }}</span>
       <a href="{{.RelPermalink}}">{{.Title}}</a>
     </li>
   {{end}}
