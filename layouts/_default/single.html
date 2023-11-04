@@ -1,6 +1,7 @@
 
+{{ define "main" }}
 <main class="main_section">
-	{{ partial "head.html" (dict "menuID" "main" "page" .) }}
+{{ partial "head.html" (dict "menuID" "main" "page" .) }}
     <h2 id="title">{{ .Title }}</h2>
       <div>
         <article id="content">
