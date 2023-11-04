@@ -9,7 +9,7 @@ display: false
 
 
 
-* [RSS](https://rssme.netlify.app/)
+* [RSS](https://rss.zzek.cn/)
 * [hugo](https://hugo.aiaide.com/)
 
 
