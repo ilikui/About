@@ -64,15 +64,18 @@ if %category%=="3" goto createkm
 
 :createlife
 
+echo 打印life
+
 set /p  content=请输入标题:
 hugo new content\section1\life\%content%
 
 :createtech
-
+echo 打印tech
 set /p  content=请输入标题:
 hugo new content\section1\tech\%content%
 
 :createkm
+echo 打印km
 set /p  content=请输入标题:
 hugo new content\section1\km\%content%
 

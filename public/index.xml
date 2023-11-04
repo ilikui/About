@@ -6,8 +6,15 @@
     <description>Recent content on 月牙博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Nov 2023 17:12:47 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 Nov 2023 17:44:55 +0800</lastBuildDate>
     <atom:link href="https://me.zzek.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工作日志</title>
+      <link>https://me.zzek.cn/section1/km/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Sat, 04 Nov 2023 17:44:55 +0800</pubDate>
+      <guid>https://me.zzek.cn/section1/km/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/</guid>
+      <description>#include &amp;lt;stdio.h&amp;gt; int main(void) { return 0; }</description>
+    </item>
     <item>
       <title>RSS订阅搜集</title>
       <link>https://me.zzek.cn/section1/km/rss%E8%AE%A2%E9%98%85%E6%90%9C%E9%9B%86/</link>
