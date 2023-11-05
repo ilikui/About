@@ -10,7 +10,8 @@ draft: false
   * [中文播客榜 (xyzrank.com)](https://xyzrank.com/#/new-podcasts)
   * [播客Scan | 播客发烧友网址导航 (bestpodcast.net)](https://bestpodcast.net/)
   * [播客 RSS Feed (getpodcast.xyz)](https://getpodcast.xyz/)
-
+  * [播客小镇 (podtown.xyz)](https://podtown.xyz/)
+  
 * 相关的RSS订阅集合
   * 来源 [中文独立播客 (typlog.com)](https://typlog.com/podlist/)
   * [八百颗栗子 (800chestnut.com)](https://800chestnut.com/)
@@ -37,3 +38,5 @@ draft: false
   * [电台 | 掘火档案 (digforfire.net)](https://www.digforfire.net/?cat=7)
   * [推杯唤斩 (dyingfordrinking.com)](https://talk.dyingfordrinking.com/)
   * [Full of Mind (fom.fm)](https://fom.fm/)
+  * [ximalaya.com/album/3558668.xml](http://www.ximalaya.com/album/3558668.xml)
+  *  
