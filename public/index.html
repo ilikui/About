@@ -1,286 +1,150 @@
 <!DOCTYPE html>
-<html><head>
-	<meta name="generator" content="Hugo 0.120.1">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" href="https://me.zzek.cn/index.xml" title="月牙博客" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
     
+    Blog
     
-    <title>月牙博客</title>
-</head>
-<body><div id="content">
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
 
-<div class="main_section">
-  <div class="menu">
-    <ul class="menu_list">
-      
-        <li class="menu_item">
-          <a href="/all-posts/">文章列表</a>
-        </li>
-      
-        <li class="menu_item">
-          <a href="/about/">关于</a>
-        </li>
-      
-        <li class="menu_item">
-          <a href="/index.xml">RSS</a>
-        </li>
-      
-    </ul>
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <h2 class="blog-title">Blog</h2>
+  <p class="blog-desc">maoblog</p>
+  <p class="blog-info">A hexo theme.</p>
+  <h3 class="posts-header">Recent Posts</h3>
+  <ul class="post-list">
+  
+  <li class="post-list-child">
+    <div class="post-list-left">
+      <div class="post-list-symbol">🚩</div>
+      <a href="/2024/02/04/hello-md/">hello.md</a>
+    </div>
+    <span class="post-list-date">
+      2024-02-04
+    </span>
+  </li>
+  
+  <li class="post-list-child">
+    <div class="post-list-left">
+      <div class="post-list-symbol">🚩</div>
+      <a href="/2024/02/04/hello-world/">Hello World</a>
+    </div>
+    <span class="post-list-date">
+      2024-02-04
+    </span>
+  </li>
+  
+</ul>
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 John Doe | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mizoreyo/static/images/wechat.PNG"><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/mizoreyo"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href="/atom.xml"><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="mailto:mizoreyo@outlook.com"><i class="iconfont icon-mail"></i></a>
   </div>
-  <h2 class="site_title"> 月牙博客</h2>
-
-  
-    
-      <a href="" class="social_icon_a">
-        <i class="fa-brands fa-bilibili social_icon" ></i>
-      </a>
-    
-  
-    
-      <a href="mailto: vlikuiv@163.com" class="social_icon_a">
-        <i class="far fa-envelope social_icon"></i>
-      </a>
-    
-  
-    
-      <a href="https://github.com/ilikui" class="social_icon_a">
-        <i class="fa-brands fa-github social_icon"></i>
-      </a>
-    
-  
-    
-      <a href="" class="social_icon_a">
-        <i class="fa-brands fa-linkedin social_icon"></i>
-      </a>
-    
-  
-  <p>
-    月牙博客
-  </p>
-  <div>
-      
-      
-        
-          <h3 class="top_section_title">知识管理</h3>
-          <p class="outer_section_description"> 知识搜藏管理... </p>
-          
-          
-            <p class="inner_section_description">  </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section1/tech/article2/" style="display: inline;">Semper semper tortor</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section1/tech/article1/" style="display: inline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                  
-                </li>
-              
-            </ul>
-          
-            <p class="inner_section_description">  </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section1/life/life/" style="display: inline;">Life</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section1/life/article2/" style="display: inline;">Semper semper tortor</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section1/life/article1/" style="display: inline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                  
-                </li>
-              
-            </ul>
-          
-            <p class="inner_section_description">  </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section1/km/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="display: inline;">学习资源</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section1/km/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6/" style="display: inline;">开源软件</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section1/km/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/" style="display: inline;">工作日志</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section1/km/rss%E8%AE%A2%E9%98%85%E6%90%9C%E9%9B%86/" style="display: inline;">RSS订阅搜集</a>
-                  
-                </li>
-              
-            </ul>
-          
-
-        
-      
-        
-      
-        
-      
-        
-          <h3 class="top_section_title">工作管理</h3>
-          <p class="outer_section_description"> 日常工作管理.... </p>
-          
-          
-            <p class="inner_section_description">  </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section2/tech/article2/" style="display: inline;">Semper semper tortor</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section2/tech/article1/" style="display: inline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                  
-                </li>
-              
-            </ul>
-          
-            <p class="inner_section_description">  </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section2/life/article2/" style="display: inline;">Semper semper tortor</a>
-                  
-                    [
-                      
-                        <a href="/tags/tag2" style="display: inline;">tag2</a>
-                      
-                    ]
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section2/life/article1/" style="display: inline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                  
-                </li>
-              
-            </ul>
-          
-
-        
-      
-        
-          <h3 class="top_section_title">生活管理</h3>
-          <p class="outer_section_description"> 日常生活记录... </p>
-          
-          
-            <p class="inner_section_description">  </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section3/tech/article2/" style="display: inline;">Semper semper tortor</a>
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section3/tech/article1/" style="display: inline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                  
-                </li>
-              
-            </ul>
-          
-            <p class="inner_section_description"> Inner section can have a description as well </p>
-
-            
-              <h4 class="recent_posts">最近文章</h4>
-            
-
-            
-            
-            <ul style="margin-top: 5px">
-              
-                <li>
-                  <a href = "/section3/life/article2/" style="display: inline;">Semper semper tortor</a>
-                  
-                    [
-                      
-                        <a href="/tags/tag1" style="display: inline;">tag1</a>
-                      
-                        <a href="/tags/tag2" style="display: inline;">tag2</a>
-                      
-                    ]
-                  
-                </li>
-              
-                <li>
-                  <a href = "/section3/life/article1/" style="display: inline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                  
-                </li>
-              
-            </ul>
-          
-
-        
-      
-
+</footer>
   </div>
-  </div>
-  
-  <p class="footer_section">Free Hugo Theme by <span><a href="https://github.com/sefeng211/techlab-hugo-theme">TechLab Theme</a></span></p>
-  
+</body>
 
-        </div></body>
+
 </html>
