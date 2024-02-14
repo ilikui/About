@@ -4,7 +4,7 @@ description: A hexo theme.
 keywords: null
 author: John Doe
 language: en
-timezone: ''
+timezone: 'Asia/Shanghai'
 url: https://about.likui.info
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
