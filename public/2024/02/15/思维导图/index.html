@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="使用mermaid   如何使用mermaid做思维导图  12345graph TD;    A--&gt;B;    A--&gt;C;    B--&gt;D;    C--&gt;D;">
+    <meta name="description" content="使用mermaid   如何使用mermaid做思维导图  12345graph TD;    A--&gt;B;    A--&gt;C;    B--&gt;D;    C--&gt;D;               graph LR       A --- B       B--&gt;C[fa:fa-ban forbidden]       B--&gt;D(fa:fa-spinner);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="思维导图">
 <meta property="og:url" content="https://about.likui.info/2024/02/15/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="使用mermaid   如何使用mermaid做思维导图  12345graph TD;    A--&gt;B;    A--&gt;C;    B--&gt;D;    C--&gt;D;">
+<meta property="og:description" content="使用mermaid   如何使用mermaid做思维导图  12345graph TD;    A--&gt;B;    A--&gt;C;    B--&gt;D;    C--&gt;D;               graph LR       A --- B       B--&gt;C[fa:fa-ban forbidden]       B--&gt;D(fa:fa-spinner);">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-15T12:06:48.000Z">
-<meta property="article:modified_time" content="2024-02-15T12:08:41.743Z">
+<meta property="article:modified_time" content="2024-02-15T12:10:29.374Z">
 <meta property="article:author" content="Kui Li">
 <meta property="article:tag" content="Home Learn">
 <meta name="twitter:card" content="summary">
@@ -142,6 +142,22 @@
 <li>如何使用mermaid做思维导图</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">    A--&gt;B;</span><br><span class="line">    A--&gt;C;</span><br><span class="line">    B--&gt;D;</span><br><span class="line">    C--&gt;D;</span><br></pre></td></tr></table></figure>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <pre class="mermaid">
+  graph LR
+      A --- B
+      B-->C[fa:fa-ban forbidden]
+      B-->D(fa:fa-spinner);
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    </script>
+  </body>
+</html>
   </div>
 </article>
 
