@@ -2,9 +2,9 @@ nav:
   Home: /
   About: /about/
   Writing: /archives/
-  Projects: http://github.com/gabithume
+  Projects: http://github.com/ilikui
 
-projects_url: http://github.com/gabithume
+projects_url: http://github.com/ilikui
 
 customize:
     gravatar:
@@ -36,7 +36,7 @@ customize:
     highlight: monokai
 
 # RSS
-rss: false
+rss: true
 
 # Plugins
 plugins:
