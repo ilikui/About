@@ -14,7 +14,7 @@
 <meta property="og:description" content="使用mermaid   如何使用mermaid做思维导图 中文网站 mermaid  12345graph TD;    A--&gt;B;    A--&gt;C;    B--&gt;D;    C--&gt;D;   流程图              graph LR       A --- B       B--&gt;C[fa:fa-ban forbidden]       B--&gt;D(fa">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-15T12:06:48.000Z">
-<meta property="article:modified_time" content="2024-02-15T12:27:25.635Z">
+<meta property="article:modified_time" content="2024-02-15T12:32:07.944Z">
 <meta property="article:author" content="Kui Li">
 <meta property="article:tag" content="Home Learn">
 <meta name="twitter:card" content="summary">
@@ -182,6 +182,65 @@ timeline
   </body>
 </html>
 
+
+<blockquote>
+<p>序列图</p>
+</blockquote>
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <pre class="mermaid">
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    John-->>Alice: Great!
+    Alice-)John: See you later!
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    </script>
+  </body>
+</html>
+
+
+<blockquote>
+<p>类图</p>
+</blockquote>
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <pre class="mermaid">
+---
+title: Animal example
+---
+classDiagram
+    note "From Duck till Zebra"
+    Animal <|-- Duck
+    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+        +String beakColor
+        +swim()
+        +quack()
+    }
+    class Fish{
+        -int sizeInFeet
+        -canEat()
+    }
+    class Zebra{
+        +bool is_wild
+        +run()
+    }
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    </script>
+  </body>
+</html>
 
 <ul>
 <li>计划</li>
