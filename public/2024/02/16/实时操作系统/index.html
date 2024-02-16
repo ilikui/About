@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文由 简悦 SimpRead 转码， 原文地址 www.cnblogs.com  0 书籍简介这本实践指南将为你提供最重要的功能知识，以使实时操作系统（RTOS）在微控制器（MCU）上启动和运行。如果你有兴趣学习如何通过使用实际硬件的实例来实现 RTOS 的应用，并讨论常见的性能与开发时间的权衡，那么你就来对地方了！我们将使用自由 RTOS 来实现代码！ 我们将使用 FreeRTOS 内核实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实时操作系统">
+<meta property="og:url" content="https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="本文由 简悦 SimpRead 转码， 原文地址 www.cnblogs.com  0 书籍简介这本实践指南将为你提供最重要的功能知识，以使实时操作系统（RTOS）在微控制器（MCU）上启动和运行。如果你有兴趣学习如何通过使用实际硬件的实例来实现 RTOS 的应用，并讨论常见的性能与开发时间的权衡，那么你就来对地方了！我们将使用自由 RTOS 来实现代码！ 我们将使用 FreeRTOS 内核实现">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230603151057845-1649432176.png">
+<meta property="og:image" content="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230603161559316-1160300791.png">
+<meta property="og:image" content="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230604093159047-1660571103.png">
+<meta property="article:published_time" content="2024-02-16T03:01:26.000Z">
+<meta property="article:modified_time" content="2024-02-16T03:01:32.438Z">
+<meta property="article:author" content="Kui Li">
+<meta property="article:tag" content="Home Learn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230603151057845-1649432176.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>实时操作系统</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/true" title="Blog" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/ilikui">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2024/02/15/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&text=实时操作系统"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&is_video=false&description=实时操作系统"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=实时操作系统&body=Check out this article: https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&name=实时操作系统&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E4%B9%A6%E7%B1%8D%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">0 书籍简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E9%80%82%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.</span> <span class="toc-text">本书适用对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.</span> <span class="toc-text">本书的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.3.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.4.</span> <span class="toc-text">准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">1 实时系统介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%9E%E6%97%B6%E6%80%A7%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">到底什么是实时性？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E8%A6%81%E6%B1%82%E7%9A%84%E8%8C%83%E5%9B%B4"><span class="toc-number">2.1.1.</span> <span class="toc-text">时序要求的范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E5%AE%9E%E6%97%B6%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.2.</span> <span class="toc-text">保证实时行为的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">实时系统的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6"><span class="toc-number">2.2.1.</span> <span class="toc-text">硬件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%B8%E6%9C%BA%E5%9B%BA%E4%BB%B6"><span class="toc-number">2.2.2.</span> <span class="toc-text">裸机固件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-RTOS-%E7%9A%84%E5%9B%BA%E4%BB%B6"><span class="toc-number">2.2.3.</span> <span class="toc-text">基于 RTOS 的固件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-RTOS-%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.2.4.</span> <span class="toc-text">基于 RTOS 的软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%BE%E5%BF%83%E5%88%B6%E4%BD%9C%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.2.5.</span> <span class="toc-text">精心制作的操作系统软件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.</span> <span class="toc-text">定义实时操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.1.</span> <span class="toc-text">硬实时系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.2.</span> <span class="toc-text">固实时系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.</span> <span class="toc-text">软实时系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%8C%83%E5%9B%B4"><span class="toc-number">2.3.4.</span> <span class="toc-text">实时操作系统的范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E4%BD%BF%E7%94%A8%E7%9A%84-RTOS"><span class="toc-number">2.4.</span> <span class="toc-text">本书使用的 RTOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.5.</span> <span class="toc-text">何时使用实时操作系统</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        实时操作系统
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Blog</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-02-16T03:01:26.000Z" itemprop="datePublished">2024-02-16</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>本文由 <a target="_blank" rel="noopener" href="http://ksria.com/simpread/">简悦 SimpRead</a> 转码， 原文地址 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/testing-/p/17453985.html">www.cnblogs.com</a></p>
+</blockquote>
+<h2 id="0-书籍简介"><a href="#0-书籍简介" class="headerlink" title="0 书籍简介"></a>0 书籍简介</h2><p>这本实践指南将为你提供最重要的功能知识，以使实时操作系统（RTOS）在微控制器（MCU）上启动和运行。如果你有兴趣学习如何通过使用实际硬件的实例来实现 RTOS 的应用，并讨论常见的性能与开发时间的权衡，那么你就来对地方了！我们将使用自由 RTOS 来实现代码！</p>
+<p>我们将使用 FreeRTOS 内核实现代码，使用低成本的 STM Nucleo 开发板与流行的 STM32 ARM MCU 一起工作，并使用 SEGGER 调试工具调试 &#x2F; 分析代码。 本书中使用的所有工具都是经过挑选的，因为它们对于刚刚入门的业余爱好者或专业人士来说很容易获得，同时也因为它们在现实世界的专业团队中很受欢迎。你通过阅读本书和通过实例获得的知识和经验将直接适用于专业环境中的实际开发。</p>
+<h3 id="本书适用对象"><a href="#本书适用对象" class="headerlink" title="本书适用对象"></a>本书适用对象</h3><p>RTOS 编程不是初学者的话题，绝对不是学习嵌入式系统的正确起点。如果你对 MCU 或 C 语言完全陌生，那么你最好从基础知识开始，在进入这个更高级的话题之前获得一些实践经验。</p>
+<p>那么，谁能从本书中受益最多？</p>
+<ul>
+<li><p>专业程序员： 你总是在裸机上编程（没有操作系统），并希望通过学习如何使用 RTOS 来满足严格的定时要求、平衡并发操作和创建模块化代码来提高你的 MCU 编程技能。</p>
+</li>
+<li><p>对 “弄脏自己的手” 感兴趣的学生： 你一直在学习理论知识，听讲座，并在实验室进行编码练习，但现在你正在寻找完整的指南，帮助你开始使用你可以实际触摸和互动的东西。</p>
+</li>
+<li><p>创客们进入了更高级的主题： 你已经写了一些草图或脚本，但你正在寻找你的下一个挑战。也许你想从头开始创建一个完整的基于 MCU 的系统 – 这里的信息将帮助你走上编程的轨道。你甚至会得到一些提示，了解为你的项目选择 MCU 时应该注意什么。</p>
+</li>
+</ul>
+<h3 id="本书的内容"><a href="#本书的内容" class="headerlink" title="本书的内容"></a>本书的内容</h3><p>本书共包括 17 章，分布在四个部分。如果你对某些材料已经很熟悉，就没有必要直接阅读本书。例如，如果你对基本的 RTOS 概念和实时系统已经很熟悉，可以跳到第 4 章，选择合适的 MCU。以下是本书各章的简要说明：</p>
+<p>第 1 章，实时系统介绍，简单介绍了什么是 RTOS 以及何时和为何要使用 RTOS。还讨论了基于 MCU 的 RTOS 的硬件和软件替代方案。</p>
+<p>第 2 章，了解 RTOS 任务，提供了超级循环和 RTOS 任务的比较，包括使用两者实现并行操作的各种方式。</p>
+<p>第 3 章，任务信号和通信机制，是对更多 RTOS 概念的简短介绍，其中有大量的图表。 这一章和第 2 章 “理解 RTOS 任务” 一起，如果你需要的话，应该可以作为参考，快速复习一下这些概念和术语。</p>
+<p>第 4 章，选择合适的 MCU，帮助你了解在选择 MCU 时应该考虑什么。在了解了硬件和固件之间的相互依存关系之后，我们来看看为什么硬件和固件工程师在系统设计中都有参与是如此重要。</p>
+<p>第 5 章 “选择 IDE” 介绍并讨论了各种类型的集成开发环境（IDE），包括为什么你可能决定选择一种而不是另一种（或者根本不选择）的原因。这里涵盖了关于设置 STM32CubeIDE 和导入示例代码的说明。</p>
+<p>第 6 章，实时系统的调试工具，涵盖了调试嵌入式系统的工具，包括我们将在本书其余部分使用的调试工具 –SEGGER Ozone 和 SEGGER SystemView 可视化软件。这里介绍了如何使用 Ozone 和 SystemView 的说明。基于硬件的测试设备和一些其他有用的工具也包括在你的嵌入式系统开发工作流程中。</p>
+<p>第 7 章，FreeRTOS 调度器，教你使用 FreeRTOS 创建任务的各种方法以及如何排除启动失败的故障。你将获得对任务状态和优化性能的不同方法的理解。</p>
+<p>第 8 章，保护数据和同步任务，包括使用信号的任务同步和使用互斥的数据保护，以及如何避免竞赛条件和优先级反转。还涉及到软件定时器。</p>
+<p>第 9 章，任务内通信，研究了任务间传递信息的不同方式，有使用队列按值和参考传递信息的不同例子，讨论了两种方法的优点和注意事项。我们还将了解一种轻量级的任务间通信机制 – 直接任务通知，包括任务通知和队列的比较。</p>
+<p>第 10 章，驱动程序和 ISRs，深入探讨了几个详细的例子，说明如何用各种 FreeRTOS 基元实现高效的驱动程序，包括信号灯、队列和流缓冲器。我们还将研究 FreeRTOS 如何与 MCU 硬件（如 DMA）结合使用，以提供极其有效的 CPU 驱动实现。这一章既可以直接使用 MCU 外围寄存器，也可以使用 STM32 HAL 代码。</p>
+<p>第 11 章，跨任务共享硬件外设，教你如何创建可以在多个任务中安全使用的驱动程序，同时共享硬件资源。我们将对 STM 提供的 USB CDC 实现进行调整，使其更加友好和高效，用一个突变器和队列来包装它，以便在多个任务中安全使用。</p>
+<p>第 12 章，创建良好抽象架构的技巧，涵盖了代码的可重用性、灵活性和硬件的可移植性，着眼于创建抽象，使你的工作更容易。还包括一些关于源代码组织的建议，以帮助促进重用。</p>
+<p>第 13 章，用队列创建松散耦合，是本书所有概念的高潮。它包括完整的松散耦合架构的例子，用来创建适当的抽象的、端到端的应用程序。我们将使用先前开发的 USB CDC 虚拟通信端口以及 LED 抽象，使用命令队列创建松散耦合的、完全可重用的 LED 排序器。这个嵌入式应用可以用 Python 编写的跨平台用户界面从 PC 上控制。</p>
+<p>第 14 章，选择一个 RTOS API，继续我们的高层架构讨论，看一下可用于访问 FreeRTOS 功能的三种不同的 API：本地 FreeRTOS API，ARM 的 CMSIS-RTOS，以及 POSIX。讨论的主题包括对可用功能的比较，以及为什么你会在不同的项目中选择其中一个。</p>
+<p>第 16 章，多处理器和多核系统，告诉你多处理器和多核系统是如何用于各种原因的 – 了解它们是什么，以及如何让系统的不同部分进行通信。</p>
+<p>第 17 章，故障排除提示和下一步，涵盖了系统故障排除的提示，包括如何避免堆栈溢出的提示和如何对挂起的系统进行故障排除。还包括对下一步工作的一些建议</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>软件测试精品书籍文档下载持续更新 <a target="_blank" rel="noopener" href="https://github.com/china-testing/python-testing-examples">https://github.com/china-testing/python-testing-examples</a> 请点赞，谢谢！</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/china-testing/python_cn_resouce">本文涉及的 python 测试开发库</a> 谢谢点赞！ <a target="_blank" rel="noopener" href="https://github.com/china-testing/python_cn_resouce">https://github.com/china-testing/python_cn_resouce</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/china-testing/python_cn_resouce/blob/main/python_good_books.md">python 精品书籍下载</a> <a target="_blank" rel="noopener" href="https://github.com/china-testing/python_cn_resouce/blob/main/python_good_books.md">https://github.com/china-testing/python_cn_resouce&#x2F;blob&#x2F;main&#x2F;python_good_books.md</a></li>
+</ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>我们已经尽一切努力使本书中的例子对广大读者来说尽可能的简单。 为了最大限度地利用本书（通过实例工作），你将需要以下硬件：</p>
+<ul>
+<li>一台可以上网的 Windows、macOS 或 Linux 电脑</li>
+<li>一块 STM32 Nucleo-F767ZI 开发板</li>
+<li>两根 Micro-USB 电缆</li>
+<li>跳线 –20 至 22 AWG（约 0.65 毫米）实心线</li>
+</ul>
+<p>由于本书的目标是为低级别的嵌入式系统编程，我们将使用 C 语言作为首选。假设有一些微控制器的知识，以及阅读数据手册的能力。如果你对 C 语言（或 C++）有很好的理解，那么你应该可以轻松地阅读本书 – 不需要以前的 RTOS 知识。由于我们将在嵌入式系统中使用 MCU，所以在硬件方面也会有一些偶尔的讨论，主要涉及到 MCU 和开发板的特性。这些主题将涵盖足够的细节，具有最低限度的硬件知识的人应该能够跟上，没有太大困难。你应该能够自如地与开发硬件进行互动和处理，尽管不需要任何实际组装。</p>
+<h2 id="1-实时系统介绍"><a href="#1-实时系统介绍" class="headerlink" title="1 实时系统介绍"></a>1 实时系统介绍</h2><p>实时系统有各种各样的实现方式和使用情况。本书的重点是如何使用实时操作系统（RTOS）在微控制器单元（MCU）上创建实时应用程序。</p>
+<p>在这一章中，我们将首先概述什么是 RTOS，并了解可能有实时要求的广泛系统。从那里，我们将看看实现实时性能的一些不同方法，以及可能使用的系统类型（如硬件、固件和软件）的概述。最后，我们将讨论什么时候在 MCU 应用中使用 RTOS 是明智的，什么时候可能完全没有必要。</p>
+<h3 id="到底什么是实时性？"><a href="#到底什么是实时性？" class="headerlink" title="到底什么是实时性？"></a>到底什么是实时性？</h3><p>任何对特定事件有确定响应的系统都可以被认为是 “实时” 的。如果一个系统在不符合时间要求时被认为是失败的，它一定是实时的。如何定义故障（以及故障系统的后果）可以有很大不同。认识到实时性要求可以有很大的不同，这一点极其重要，既包括时间要求的速度，也包括如果没有达到所要求的实时期限，后果的严重性。</p>
+<h4 id="时序要求的范围"><a href="#时序要求的范围" class="headerlink" title="时序要求的范围"></a>时序要求的范围</h4><p>为了说明可能遇到的定时要求的范围，让我们考虑从模数转换器（ADC analog-to-digital converters）获取读数的几个不同系统。</p>
+<p>我们要看的第一个系统是一个控制系统，它被设置为控制烙铁的温度（如下图所示）。我们所关注的系统部分是 MCU、ADC、传感器和加热器。</p>
+<p>MCU 负责以下工作：</p>
+<ul>
+<li>通过 ADC 从温度传感器获取读数</li>
+<li>运行闭环控制算法（以保持烙铁头的温度恒定）。</li>
+<li>根据需要调整加热器的输出<br><img src="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230603151057845-1649432176.png"></li>
+</ul>
+<p>由于焊头的温度变化不是非常快，MCU 可能只需要每秒获取 50 个 ADC 样本（50Hz）。负责调整加热器的控制算法（以保持恒定的温度）以更慢的速度运行，5 赫兹：</p>
+<p>ADC 将断言硬件线路，表示转换已经完成，并准备让 MCU 将读数转移到其内部存储器。读取 ADC 的 MCU 有多达 20 毫秒的时间将数据从 ADC 传输到内部存储器，然后才需要进行新的读取。MCU 还需要运行控制算法来计算加热器输出的更新值，频率为 5 赫兹（200 毫秒）。这两种情况（虽然不是特别快）都是实时要求的例子：</p>
+<p>现在，在 ADC 读数的另一端，我们可能有高带宽的网络分析仪或示波器，它将以几十 GHz 的速率读取 ADC！在这种情况下，ADC 的原始读数很可能是在几百个小时内完成！原始 ADC 读数可能会被转换成频域，并在高分辨率前面板上以图形方式显示，每秒几十次。像这样的系统需要进行大量的处理，必须遵守极其严格的时间要求，如果它要正常运作的话。</p>
+<p>在光谱的中间位置，你会发现诸如闭环运动控制器等系统，它们通常需要在数百赫兹至数十千赫兹之间执行其 PID 控制回路，以便在快速移动的系统中提供稳定性。那么，实时性有多快？嗯，仅从 ADC 的例子就可以看出，这取决于。</p>
+<p>在前面的一些例子中，如示波器或电烙铁，如果不能满足计时要求，就会导致性能不佳或报告错误的数据。在电烙铁的情况下，这可能是温度控制不佳（这可能导致组件损坏）。对于测试设备来说，错过最后期限可能导致错误的读数，这就是失败。这对一些人来说可能不是什么大问题，但对该设备的用户来说，他们依赖所报告数据的准确性，这可能是非常重要的。一些用于标准验证的实验室设备对产品的一致性进行检查。如果设备中存在未被发现的故障，导致测量不准确，就可能报告出不正确的数值。可能有可能重新进行可疑的测试。然而，最终，如果重新测试的频率过高，可靠的读数不能指望，那么测试设备将开始变得可疑，并被视为不可靠，销售将下降 – 所有这些都是因为一个实时要求没有得到持续满足。</p>
+<p>在其他系统中，如无人机的飞行控制或工业过程控制中的运动控制，如果不能及时运行控制算法，可能会导致更多的物理灾难，如崩溃。在这种情况下，其后果有可能危及生命。</p>
+<p>值得庆幸的是，可以采取一些措施来避免所有这些故障情况的发生。</p>
+<h4 id="保证实时行为的方法"><a href="#保证实时行为的方法" class="headerlink" title="保证实时行为的方法"></a>保证实时行为的方法</h4><p>确保一个系统做它要做的事情的最简单的方法之一是确保它在满足要求的同时尽可能的简单。这意味着要抵制将简单的任务过度复杂化的冲动。如果烤面包机是用来烤面包的，就不要在上面加一个显示屏，让它也告诉你天气情况；只要让它在适当的时间内打开加热元件即可。这个简单的任务已经完成了多年，不需要任何代码或可编程设备。</p>
+<p>作为程序员，如果我们遇到一个问题，我们倾向于立即伸手去拿最近的 MCU 并开始编码。然而，产品的一些功能（尤其是当产品有电子机械部件时）最好不用代码来处理。车窗其实不需要带轮询循环的 MCU 来运行，通过驱动器打开电机，观察传感器的反馈来关闭它们。这项任务实际上可以由一些机械开关和二极管来处理。如果给定的系统需要一个反馈报告机制 – 比如在窗口卡住的情况下需要断言错误 – 那么可能别无选择，只能使用一个更复杂的解决方案。然而，作为工程师，我们的目标应该始终是相同的 – 尽可能简单地解决问题，不增加额外的复杂性。</p>
+<p>如果一个问题可以单独通过硬件来解决，那么在拿出 MCU 之前，先与团队一起探讨这种可能性。如果问题可以通过使用简单的 while 循环来执行一些传感器状态的轮询来处理，那么就简单地轮询传感器的状态；可能没有必要开始编码中断服务程序（ISRs）。如果设备的功能是单一用途的，那么在很多情况下，完整的实时操作系统可能会妨碍工作 – 所以不要使用它!</p>
+<h3 id="实时系统的类型"><a href="#实时系统的类型" class="headerlink" title="实时系统的类型"></a>实时系统的类型</h3><p>有许多不同的方法来实现实时行为。下面的部分是关于你可能遇到的各种类型的实时系统的讨论。还要注意的是，有可能出现以下系统的组合，作为子系统一起工作。这些不同的子系统可以出现在产品、板卡、甚至是芯片层面（这种方法在第 16 章多处理器和多核系统中讨论）</p>
+<h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><p>最初的实时系统，即硬件，仍然是满足极其严格的公差和 &#x2F; 或快速定时要求的首选。它可以用离散数字逻辑、模拟组件、可编程逻辑或特定应用集成组件（ASIC application-specific integrated component）来实现。可编程逻辑器件（PLD Programmable logic devices）、复杂可编程逻辑器件（CPLD complex programmable logic devices）和域可编程门阵列（FPGA field-programmable gate arrays）是该解决方案中可编程逻辑器件部分的不同成员。基于硬件的实时系统可以涵盖从模拟滤波器、闭环控制和简单的状态机到复杂的视频编解码器的任何东西。当实施时考虑到省电，可以使 ASIC 比基于 MCU 的解决方案消耗更少的功率。一般来说，硬件的优点是可以即时并行地进行操作（当然，这是过度简化），而单核 MCU 则只能给人以并行处理的假象。</p>
+<p>实时硬件开发的缺点一般包括以下几点：</p>
+<ul>
+<li>非可编程设备的不灵活性。</li>
+<li>所需的专业技术通常不如软件 &#x2F; 固件开发人员那么普遍。</li>
+<li>全功能可编程器件的成本（例如，大型 FPGA）。</li>
+<li>开发定制 ASIC 的高成本。</li>
+</ul>
+<h4 id="裸机固件"><a href="#裸机固件" class="headerlink" title="裸机固件"></a>裸机固件</h4><p>裸机固件被认为是（为我们的目的）不是建立在某种类型的预先存在的内核 &#x2F; 调度器之上的任何固件。一些工程师更进一步，认为真正的裸机固件不能使用任何预先存在的库（如供应商提供的硬件抽象库），这种观点也有一定的道理。裸机实现的好处是，用户的代码可以完全控制硬件的所有方面。主循环代码执行被打断的唯一方法是中断发生时。在这种情况下，其他东西控制 CPU 的唯一方法是让现有的 ISR 完成，或让另一个更优先的中断启动。</p>
+<p>当有少量相对简单的任务需要执行时，或者有单一的任务时，裸机固件解决方案就很出色。如果固件保持专注并遵循最佳实践，由于 ISR（或在某些情况下，缺乏 ISR）之间的相互作用相对较少，确定的性能通常容易测量和保证。在一些极端的情况下，对于高负载的 MCU（或在 ROM&#x2F;RAM 方面受到高度限制的 MCU），裸机是唯一的选择。</p>
+<p>随着裸机实现在异步处理事件时变得更加复杂，它们开始与实时操作系统提供的功能重叠。要记住的一个重要考虑是，通过使用 RTOS– 而不是试图推出你自己的线程安全系统 – 你会自动受益于 RTOS 供应商所做的所有测试。你也有机会使用具有事后分析能力的代码 – 今天所有的 RTOS 都已经存在了好几年了。作者一直在调整和增加功能，以使它们在不同的应用中变得强大和灵活。</p>
+<h4 id="基于-RTOS-的固件"><a href="#基于-RTOS-的固件" class="headerlink" title="基于 RTOS 的固件"></a>基于 RTOS 的固件</h4><p>在 MCU 上运行调度内核的固件是基于 RTOS 的固件。调度器和一些 RTOS 原件的引入允许任务在它们自己拥有处理器的假象下运行（在第 2 章，了解 RTOS 任务中详细讨论）。使用 RTOS 可以使系统在后台执行其他复杂任务的同时保持对最重要事件的响应。</p>
+<p>所有这些任务的运行都有一些弊端。共享数据的任务之间可能会出现相互依赖的情况 – 如果处理不当，这种依赖性会导致任务意外地阻塞。虽然有处理这种情况的规定，但它确实增加了代码的复杂性。中断一般会使用任务信令来尽快处理中断，并将尽可能多的处理推迟到任务中。如果处理得当，这种解决方案对于保持复杂系统的响应是非常好的，尽管有许多复杂的互动。然而，如果处理不当，这种设计范式会导致更多的时间抖动和更少的确定性。</p>
+<h4 id="基于-RTOS-的软件"><a href="#基于-RTOS-的软件" class="headerlink" title="基于 RTOS 的软件"></a>基于 RTOS 的软件</h4><p>运行在包含内存管理单元（MMU）和中央处理单元（CPU）的完整操作系统上的软件被认为是基于 RTOS 的软件。用这种方法实现的应用程序可能非常复杂，需要在各种内部和外部系统之间进行许多不同的交互。使用完整的操作系统的好处是伴随着它的所有能力 – 包括硬件和软件。</p>
+<p>在硬件方面，通常有更多的 CPU 核心以更高的时钟速率运行。可以有数千兆字节的内存和持久性存储器。增加外围硬件可以像增加一块卡一样简单（只要有预先存在的驱动程序）。</p>
+<p>在软件方面，有大量用于网络堆栈、用户界面开发、文件处理等的开源和供应商专有解决方案。在所有这些能力和选项之下，内核仍然以这样一种方式实现，即关键任务不会被无限期地阻断，这在传统的操作系统中是可能的。正因为如此，获得确定性的性能仍然是可以做到的，就像 RTOS 固件一样。</p>
+<h4 id="精心制作的操作系统软件"><a href="#精心制作的操作系统软件" class="headerlink" title="精心制作的操作系统软件"></a>精心制作的操作系统软件</h4><p>与基于 RTOS 的软件类似，一个标准的操作系统拥有开发者可以要求的所有库和功能。然而，缺少的是对满足时间要求的严格关注。一般来说，用传统操作系统实现的系统会有更少的确定性行为（在安全关键的情况下，没有一个可以真正指望的）。如果在没有灾难性后果的情况下，有一个宽松的实时性要求，如果没有按时完成一个踌躇满志的最后期限，只要在选择运行什么软件堆栈和控制它们的资源使用方面谨慎行事，标准的操作系统就可以发挥作用。带有 PREEMPT_RT 补丁的 Linux 内核是这种类型的实时系统的一个很好的例子。</p>
+<p>所以，现在实现实时系统的所有选项都已被列出，现在是时候准确定义我们说的 RTOS，特别是基于 MCU 的 RTOS 是什么意思。</p>
+<h3 id="定义实时操作系统"><a href="#定义实时操作系统" class="headerlink" title="定义实时操作系统"></a>定义实时操作系统</h3><p>操作系统（如 Windows、Linux 和 macOS）的创建是为了提供一个一致的编程环境，将底层硬件抽象化，使其更容易编写和维护计算机程序。它们为应用程序员提供了许多不同的基元（如线程和互斥），可以用来创建更复杂的行为。例如，可以创建一个多线程程序，提供对共享数据的保护性访问：<br><img src="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230603161559316-1160300791.png"></p>
+<p>前面的应用程序并没有实现线程和互斥基元，它只是利用了它们。线程和互斥的实际实现是由操作系统处理的。这有几个优点：</p>
+<ul>
+<li>应用程序代码不那么复杂。</li>
+<li>更容易理解 – 无论哪个程序员都使用相同的原语，从而更容易理解由不同人创建的代码。</li>
+<li>硬件可移植性更好 – 有了适当的预防措施，代码可以在操作系统支持的任何硬件上运行而无需修改。</li>
+</ul>
+<p>在前面的例子中，mutex 被用来确保每次只有一个线程可以访问共享数据。在通用操作系统的情况下，每个线程都会很高兴地等待突变体无限期地可用，然后再去访问共享数据。这是实时操作系统与通用操作系统不同的地方。在 RTOS 中，所有阻塞的系统调用都是有时间限制的。RTOS 不允许无限期地等待 mutex，而是允许指定一个最大延迟。例如，如果线程 1 试图获取 Mutex，但在 100 毫秒（或 1 秒）后仍未得到它，它将继续等待 Mutex 变得可用。</p>
+<p>在 RTOS 的实现中，要指定等待 Mutex 变得可用的最大时间。如果线程 1 指定它必须在 100 毫秒内获取 Mutex，并且在 101 毫秒后仍未收到 Mutex，线程 1 将收到通知，说 Mutex 没有被及时获取。指定这个超时是为了帮助创建确定性的系统。</p>
+<p>任何提供执行给定代码的确定性方式的操作系统都可以被认为是实时操作系统。这个实时操作系统的定义涵盖了相当多的系统。</p>
+<p>有几个特征倾向于将 RTOS 应用与另一 RTOS 应用区分开来：不满足实时截止日期的频率是可以接受的，以及不满足实时截止日期的严重程度。不同范围的 RTOS 应用通常被归纳为三类 – 硬、固和软实时系统。</p>
+<p>不要太纠结于固和软实时系统之间的区别。这些术语的定义在我们的行业内甚至没有一致的意见。重要的是，你要知道你的系统的要求，并设计一个解决方案来满足这些要求!</p>
+<p>如果故障会导致生命或重大财产的损失，那么故障的严重程度一般被认为是安全关键型的。有一些硬实时系统与安全无关。</p>
+<h4 id="硬实时系统"><a href="#硬实时系统" class="headerlink" title="硬实时系统"></a>硬实时系统</h4><p>硬实时系统必须在 100% 的时间内满足其最后期限。如果系统没有达到最后期限，那么它就被认为是失败了。这并不一定意味着如果故障发生在硬实时系统中就会伤害到人，只是说如果系统错过了一个截止日期，它就失败了。</p>
+<p>硬实时系统的一些例子可以在医疗设备中找到，如心脏起搏器和具有极其严格控制参数的控制系统。在心脏起搏器的情况下，如果心脏起搏器错过了在正确的时间点进行电脉冲的最后期限，它可能会杀死病人（这就是为什么心脏起搏器被定义为安全关键型系统）。</p>
+<p>相反，如果计算机数控（CNC）铣床上的运动控制系统没有及时对指令做出反应，它可能会将刀具插入正在加工的零件的错误部位，从而毁掉它。在我们提到的这些案例中，故障造成了生命损失，而另一个则把一些金属变成了废品，但这两个故障都是由错过的最后期限造成的。</p>
+<h4 id="固实时系统"><a href="#固实时系统" class="headerlink" title="固实时系统"></a>固实时系统</h4><p>与硬实时系统相比，固实时系统几乎在所有时间都需要达到其最后期限。如果视频和音频瞬间失去同步，可能不会被认为是系统故障，但可能会使视频的消费者感到不安。</p>
+<p>在大多数控制系统中（类似于前一个例子中的烙铁），稍微超出规定时间的几个样本的读取不太可能完全破坏系统控制。如果控制系统有 ADC，可以自动获取新的样本，如果 MCU 没有及时读取新的样本，它将被新的样本覆盖。这种情况可能偶尔发生，但如果发生得太频繁或太频繁，温度稳定性就会被破坏。在要求特别高的系统中，可能只需要错过几个样本，整个控制系统就会失灵。</p>
+<h4 id="软实时系统"><a href="#软实时系统" class="headerlink" title="软实时系统"></a>软实时系统</h4><p>当涉及到系统必须满足其最后期限的频率时，软实时系统是最宽松的。这些系统通常只提供一个遵守最后期限的最大努力的承诺。</p>
+<p>汽车中的巡航控制是软实时系统的很好的例子，因为对它没有硬性规定或期望。驾驶员通常不期望他们的速度能收敛到设定速度的 +&#x2F;- x mph&#x2F;kph 之内。他们期望在合理的情况下，例如没有大的坡度，控制系统最终会让他们在大多数时间内接近他们的理想速度。</p>
+<h4 id="实时操作系统的范围"><a href="#实时操作系统的范围" class="headerlink" title="实时操作系统的范围"></a>实时操作系统的范围</h4><p>实时操作系统的功能各不相同，它们最适合的处理器架构和尺寸也各不相同。在较小的方面，我们有较小的以 8-32 位 MCU 为重点的 RTOS，如 FreeRTOS、Keil RTX、Micrium µC、ThreadX，以及更多。 这类 RTOS 适合在微控制器上使用，并提供一个紧凑的实时内核作为最基本的产品。当从 MCU 转向 32 位和 64 位应用处理器时，你会倾向于找到 RTOS，如 Wind River VxWorks 和 Wind River Linux、Green Hills 的 Integrity OS，甚至是带有 PREEMPT_RT 内核扩展的 Linux。这些完整的操作系统提供了大量的软件选择，为实时调度要求以及一般计算任务提供了解决方案。即使有了我们刚刚提到的操作系统，我们也只是触及了可用的表面。在所有级别的实时操作系统中，无论大小，都有免费和付费的解决方案（有些价格远远超过 10000 美元）。</p>
+<p>那么，既然有免费的解决方案，你为什么还要选择付费呢？免费提供的 RTOS 解决方案和付费解决方案之间的主要区别因素是安全批准、中间件和客户支持。 因为实时操作系统提供了高度确定的执行环境，它们经常被用于复杂的安全关键型应用。我们所说的安全关键，一般是指一个系统，其故障可能会伤害人或造成重大损失。这些系统需要确定性的操作，因为它们必须一直以可预测的方式行事。保证代码在固定的时间内对事件做出反应是确保它们行为一致的重要一步。这些安全关键型应用中的大多数都受到监管，并有自己的一套管理机构和标准，如飞机的 DO-178B 和 DO-178C 或工业应用的 IEC 61508 SIL 3 和 ISO 26262 ASILD。为了使安全关键型认证更经济实惠，设计者通常会保持这些系统的代码极其简单（因此有可能从数学上证明系统将稳定运行，不会出错），或者转向已经通过认证的商业 RTOS 解决方案，作为一个起点。威腾斯丁公司的 SafeRTOS 是 FreeRTOS 的衍生产品，已获得工业、医疗和汽车领域的认证。</p>
+<p>中间件也可以是复杂系统中的一个极其重要的组成部分。中间件是运行在用户代码（你，应用程序员编写的代码）和较低层，如 RTOS 或裸机（无 RTOS）之间的代码。付费解决方案的另一个价值主张是，生态系统提供了一套预集成的高质量中间件（如文件系统、网络堆栈、GUI 框架、工业协议等），最大限度地减少了开发，降低了整体项目风险。使用中间件而不是自己开发的原因是为了减少内部开发团队编写的原始代码量。这既降低了风险，也减少了团队花费的总时间 – 因此，根据项目复杂性和进度要求等因素，这可能是一项值得的投资。</p>
+<p>付费解决方案通常也会直接由固件供应商提供某种程度的客户支持。雇佣和保留工程师的成本很高。管理人员最害怕的莫过于走进一个满是工程师的房间，这些人正在为他们的工具而困惑，而不是为需要解决的真正问题而工作。有了专家的帮助，只需一封电子邮件或一个电话，就可以大大提高团队的生产力，从而缩短周转时间，使每个人的工作环境更加愉快。</p>
+<p>FreeRTOS 有付费的支持和培训选项，以及付费的中间件解决方案，这些都可以被整合。然而，也有开放源码和 &#x2F; 或免费提供的中间件组件，其中一些将在本书中讨论。</p>
+<h3 id="本书使用的-RTOS"><a href="#本书使用的-RTOS" class="headerlink" title="本书使用的 RTOS"></a>本书使用的 RTOS</h3><p>什么这本书只涉及一个 MCU 模型上的一个 RTOS？有几个原因，其中一个原因是我们要讲的大部分概念几乎适用于任何可用的 RTOS，就像良好的编码习惯超越了你碰巧要编码的语言一样。通过专注于一个 RTOS 和一个 MCU 的单一实现，我们将能够更深入地探讨一些话题，而不是在尝试讨论所有的替代方案时才有可能。</p>
+<p>FreeRTOS 是最流行的用于 MCU 的 RTOS 实现之一，而且非常广泛。它已经存在了 15 年之久，并且已经被移植到几十个平台。如果你曾经与熟悉 RTOS 编程的真正的底层嵌入式系统工程师交谈过，他们肯定听说过 FreeRTOS，而且很可能至少使用过一次。通过把注意力集中在 FreeRTOS 上，你将有能力迅速地把你的 FreeRTOS 知识迁移到其他硬件上，或者在情况需要时过渡到其他 RTOS。</p>
+<p>我们使用 FreeRTOS 的另一个原因？嗯，它是免费的! FreeRTOS 是在 MIT 许可下发布的。关于许可和其他 FreeRTOS 衍生产品的更多细节，如 SAFERTOS 和 OpenRTOS，请参见 <a target="_blank" rel="noopener" href="https://www.freertos.org/a00114.html%E3%80%82">https://www.freertos.org/a00114.html。</a></p>
+<p>下面的图表显示了 FreeRTOS 在一个典型的 ARM 固件堆栈中的位置。堆栈指的是构成系统的所有不同层的固件组件，以及它们是如何堆叠在一起的。这里的用户是指使用 FreeRTOS 的程序员（而不是嵌入式系统的终端用户）：</p>
+<p><img src="https://img2023.cnblogs.com/blog/3174021/202306/3174021-20230604093159047-1660571103.png"></p>
+<p>一些值得注意的项目如下：</p>
+<ul>
+<li>用户代码能够访问相同的 FreeRTOS API，不管底层的硬件端口实现如何。</li>
+<li>FreeRTOS 并不阻止用户代码使用供应商提供的驱动程序、CMSIS 或原始硬件寄存器。</li>
+<li>拥有一个在不同硬件间一致的标准化的 API 意味着代码可以很容易地在硬件目标之间迁移，而不需要不断地重写。让代码直接与硬件对话的能力也提供了必要时编写极其有效的代码的手段（以牺牲可移植性为代价）。</li>
+</ul>
+<h3 id="何时使用实时操作系统"><a href="#何时使用实时操作系统" class="headerlink" title="何时使用实时操作系统"></a>何时使用实时操作系统</h3><p>偶尔，当有人第一次了解到实时操作系统这个术语时，他们会错误地认为实时操作系统是在嵌入式系统中实现实时行为的唯一方法。这当然是可以理解的（尤其是考虑到这个名字），但这与事实相去甚远。有时，最好把 RTOS 看作是一种潜在的解决方案，而不是用于一切的解决方案。一般来说，对于一个基于 MCU 的 RTOS 来说，要成为一个特定问题的理想解决方案，它需要有 Goldilocks 级别的复杂性 – 不要太简单，但也不要太复杂。</p>
+<p>如果有一个极其简单的问题，例如监测两个状态并在它们同时出现时触发警报，那么解决方案可能是一个直接的硬件解决方案（例如一个 AND 门）。在这种情况下，可能没有理由使事情进一步复杂化，因为 AND 门的解决方案将是非常快的，具有高度的确定性和极端的可靠性。它也将需要很少的开发时间。</p>
+<p>现在，考虑一下只有一两个任务需要执行的情况，如控制电机的速度和观察编码器以确保正确的距离被穿越。这当然可以用离散的模拟和数字硬件来实现，但有可配置的距离会增加一些复杂性。此外，调整控制环路的系数很可能需要调整电位器的设置（可能是针对每个单独的板子），按照今天的制造标准，这在某些或大多数情况下是不可取的。因此，在硬件解决方案方面，我们只能用 CPLD 或 FPGA 来实现运动控制算法和跟踪行走的距离。这恰好是一个非常合适的选择，因为它有可能小到可以装入 CPLD，但在某些情况下，FPGA 的成本可能是不可接受的。这个问题也是由 MCU 经常处理的。如果现有的内部资源不具备硬件语言或工具链所需的专业知识，那么裸机 MCU 固件解决方案可能是一个不错的选择。</p>
+<p>假设问题更加复杂，例如控制几个不同执行器的设备，从传感器中读取数据，并将这些值存储在本地存储器中。也许该设备还需要坐在某种网络上，如以太网、Wi-Fi、控制器区域网络（CAN），等等。一 TOS 可以很好地解决这种类型的问题。事实上，有许多不同的任务需要完成，或多或少地相互异步，这使得我们很容易认为 RTOS 带来的额外复杂性将得到回报。实时操作系统帮助我们确保低优先级的、更复杂的任务，如网络和文件系统堆栈，不会干扰时间更紧迫的任务（如控制执行器和读取传感器）。在许多情况下，可能会有某种形式的控制系统，通常会从在明确的时间间隔内运行中受益，这是实时操作系统的优势。</p>
+<p>现在，考虑一个与前面类似的系统，但现在有多种网络要求，例如为网页提供服务，处理复杂的企业环境中的用户认证，以及将文件推送到需要基于不同网络文件协议的各种共享目录。这种复杂程度可以用 RTOS 来实现，但同样，根据可用的团队资源，这可能最好留给完整的操作系统来处理（无论是 RTOS 还是通用的），因为许多所需的复杂软件堆栈已经存在。有时，可以采取多核方法，其中一个核心运行 RTOS，另一个运行通用操作系统。</p>
+<p>现在，可能很明显，没有确切的方法来确定哪种实时解决方案对所有情况都是正确的。每个项目和团队都有自己独特的要求、背景、技能组合和背景，为这个决定提供了舞台。选择一个问题的解决方案有很多因素；重要的是要保持开放的心态，选择在那个时间点上最适合你的团队和项目的解决方案。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/ilikui">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E4%B9%A6%E7%B1%8D%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">0 书籍简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E9%80%82%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.</span> <span class="toc-text">本书适用对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.</span> <span class="toc-text">本书的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.3.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.4.</span> <span class="toc-text">准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">1 实时系统介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%9E%E6%97%B6%E6%80%A7%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">到底什么是实时性？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E8%A6%81%E6%B1%82%E7%9A%84%E8%8C%83%E5%9B%B4"><span class="toc-number">2.1.1.</span> <span class="toc-text">时序要求的范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E5%AE%9E%E6%97%B6%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.2.</span> <span class="toc-text">保证实时行为的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">实时系统的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6"><span class="toc-number">2.2.1.</span> <span class="toc-text">硬件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%B8%E6%9C%BA%E5%9B%BA%E4%BB%B6"><span class="toc-number">2.2.2.</span> <span class="toc-text">裸机固件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-RTOS-%E7%9A%84%E5%9B%BA%E4%BB%B6"><span class="toc-number">2.2.3.</span> <span class="toc-text">基于 RTOS 的固件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-RTOS-%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.2.4.</span> <span class="toc-text">基于 RTOS 的软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%BE%E5%BF%83%E5%88%B6%E4%BD%9C%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.2.5.</span> <span class="toc-text">精心制作的操作系统软件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.</span> <span class="toc-text">定义实时操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.1.</span> <span class="toc-text">硬实时系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.2.</span> <span class="toc-text">固实时系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.</span> <span class="toc-text">软实时系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%8C%83%E5%9B%B4"><span class="toc-number">2.3.4.</span> <span class="toc-text">实时操作系统的范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E4%BD%BF%E7%94%A8%E7%9A%84-RTOS"><span class="toc-number">2.4.</span> <span class="toc-text">本书使用的 RTOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.5.</span> <span class="toc-text">何时使用实时操作系统</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&text=实时操作系统"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&is_video=false&description=实时操作系统"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=实时操作系统&body=Check out this article: https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&title=实时操作系统"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://about.likui.info/2024/02/16/%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/&name=实时操作系统&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2024 Kui Li
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/ilikui">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
