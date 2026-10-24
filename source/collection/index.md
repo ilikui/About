@@ -106,6 +106,7 @@ comments: false
 </div>
 
 <style>
+body:has(#md-vault) .static-page>header{display:none}
 .md-vault{--vault-ink:#202920;--vault-muted:#6e786f;--vault-line:#e3e9e1;--vault-green:#315f48;color:var(--vault-ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
 .md-vault *{box-sizing:border-box}
 .md-vault .vault-hero{position:relative;margin:1.5rem 0 3rem;padding:2.6rem 2.5rem 1.6rem;border:1px solid var(--vault-line);background:radial-gradient(ellipse at 90% 12%,rgba(205,224,201,.58),transparent 36%),linear-gradient(135deg,#fbfcf9,#f0f5ee)}
