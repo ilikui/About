@@ -1,2 +1,7 @@
+[build]
+  # 每次部署都从源码重新生成站点，避免发布仓库中过期的 public/ 目录。
+  command = "npm run clean && npm run build"
+  publish = "public"
+
 [build.environment]
   NODE_VERSION = "22"
