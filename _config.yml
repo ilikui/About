@@ -1,9 +1,9 @@
-title: Blog
-subtitle: My Blog
-description: Learn Thinking.
-keywords: Home Learn
+title: About｜知识与思考
+subtitle: 持续积累，持续创造
+description: 记录阅读、技术学习与日常思考，构建可连接、可复用、持续生长的个人知识库。
+keywords: 知识管理, 读书笔记, 技术学习, 思维导图, 个人成长
 author: Kui Li
-language: en
+language: zh-CN
 timezone: 'Asia/Shanghai'
 url: https://about.likui.info
 permalink: ':year/:month/:day/:title/'
