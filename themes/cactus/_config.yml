@@ -1,10 +1,10 @@
 nav:
-  Home: /
-  About: /about/
-  Writing: /archives/
-  Projects: http://github.com/ilikui
+  首页: /
+  关于: /about/
+  文章: /archives/
+  GitHub: https://github.com/ilikui
 
-projects_url: http://github.com/ilikui
+projects_url: https://github.com/ilikui
 
 customize:
     gravatar:
@@ -27,10 +27,7 @@ customize:
         url: /images/apple-touch-icon.png
         gravator: false
     social_links:
-        github: http://github.com/ilikui
-        twitter: /
-        facebook: /
-        linkedin: /
+        github: https://github.com/ilikui
     show_all_posts: false
     post_count: 5
     highlight: monokai
