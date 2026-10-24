@@ -27,3 +27,64 @@
         }());
     </script>
 <% } %>
+
+
+<!-- Mermaid diagrams for fenced Markdown blocks -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+(function () {
+  function renderMermaidNotes() {
+    if (!window.mermaid) return;
+    var blocks = document.querySelectorAll(
+      '.content pre > code.language-mermaid, .content pre > code.lang-mermaid'
+    );
+    blocks.forEach(function (code, index) {
+      var pre = code.parentElement;
+      if (!pre || pre.dataset.mermaidProcessed === 'true') return;
+      pre.dataset.mermaidProcessed = 'true';
+      var diagram = document.createElement('div');
+      diagram.className = 'mermaid';
+      diagram.setAttribute('role', 'img');
+      diagram.setAttribute('aria-label', 'Mermaid diagram ' + (index + 1));
+      diagram.textContent = code.textContent.trim();
+      pre.replaceWith(diagram);
+    });
+    window.mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: {
+        fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
+        primaryColor: '#eaf3e8',
+        primaryTextColor: '#26382c',
+        primaryBorderColor: '#88a88b',
+        lineColor: '#77917a',
+        secondaryColor: '#f5f8f2',
+        tertiaryColor: '#ffffff',
+        background: '#fbfdf9',
+        mainBkg: '#edf5e9',
+        nodeBorder: '#8eae91',
+        clusterBkg: '#f7faf5',
+        clusterBorder: '#d6e4d4',
+        edgeLabelBackground: '#fbfdf9'
+      },
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
+      sequence: { useMaxWidth: true, diagramMarginX: 16, diagramMarginY: 16 }
+    });
+    var diagrams = document.querySelectorAll('.content .mermaid:not([data-processed])');
+    if (diagrams.length) {
+      window.mermaid.run({ nodes: diagrams }).catch(function (error) {
+        diagrams.forEach(function (node) {
+          node.classList.add('mermaid-error');
+          node.textContent = 'Mermaid 渲染失败，请检查图表语法。\n' + (error && error.message ? error.message : '');
+        });
+      });
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaidNotes);
+  } else {
+    renderMermaidNotes();
+  }
+})();
+</script>
