@@ -1,4 +1,9 @@
-<div id="archive">
+<div id="archive" class="archive-page">
+  <div class="archive-intro">
+    <p class="archive-eyebrow">THE KNOWLEDGE INDEX</p>
+    <h1>笔记与文章</h1>
+    <p>把每一次阅读、思考与实践，整理成可以再次发现的知识卡片。</p>
+  </div>
   <ul class="post-list">
     <% var year = 0 %>
     <% var change = false %>
@@ -7,11 +12,17 @@
       <% change = year !== itemYear %>
       <% year = change ? itemYear : year %>
       <% if (change) { %>
-        <h2><%= year %></h2>
+        <li class="archive-year-heading"><h2><%= year %></h2></li>
       <% } %>
       <li class="post-item">
-        <%- partial('_partial/post/date', { post: post, class_name: 'meta' }) %>
-        <span><%- partial('_partial/post/title', { post: post, index: true, class_name: '' }) %></span>
+        <span class="meta"><%- partial('_partial/post/date', { post: post, class_name: 'archive-card-date' }) %></span>
+        <span class="archive-card-title"><%- partial('_partial/post/title', { post: post, index: true, class_name: 'posttitle' }) %></span>
+        <% if (post.excerpt) { %>
+          <p class="archive-card-excerpt"><%- strip_html(post.excerpt).replace(/\s+/g, ' ').slice(0, 180) %><% if (strip_html(post.excerpt).length > 180) { %>…<% } %></p>
+        <% } else if (post.description) { %>
+          <p class="archive-card-excerpt"><%= post.description %></p>
+        <% } %>
+        <span class="archive-card-more">打开笔记 ↗</span>
       </li>
     <% }); %>
   </ul>
