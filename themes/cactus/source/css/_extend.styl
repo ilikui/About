@@ -350,3 +350,34 @@ $base-style
         font-size .8rem
     .home-note
       padding 1rem
+
+
+// About page: readable profile sections and responsive focus cards.
+.about-focus-grid
+  display grid
+  grid-template-columns repeat(3, minmax(0, 1fr))
+  gap .85rem
+  margin 1.25rem 0 2rem
+
+  .about-focus-card
+    padding 1.1rem
+    border 1px solid #e5e9e3
+    border-radius 12px
+    background #fafbf9
+
+    h3
+      margin .2rem 0 .6rem
+      color #26352a
+      font-size 1rem
+      text-decoration none
+
+    p
+      margin 0
+      color #667067
+      font-size .88rem
+      line-height 1.85
+      text-align left
+
+@media (max-width: 700px)
+  .about-focus-grid
+    grid-template-columns 1fr
