@@ -84,3 +84,274 @@ $base-style
     td
         border-bottom: none 
         padding: 9px 8px 0px 8px
+
+
+// Homepage: calm editorial layout with clear hierarchy and responsive cards.
+.home-page
+  --home-ink #202820
+  --home-muted #6d756e
+  --home-line #e5e9e3
+  --home-paper #ffffff
+  --home-green #2d6a4f
+  color var(--home-ink)
+  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif
+
+  .home-hero
+    position relative
+    overflow hidden
+    margin 2.5rem 0 3.5rem
+    padding 3.25rem 3rem 2.5rem
+    border 1px solid var(--home-line)
+    border-radius 22px
+    background linear-gradient(135deg, #f7faf6 0%, #eef4ed 100%)
+
+  .home-eyebrow, .home-kicker
+    margin 0
+    color var(--home-green)
+    font-size .68rem
+    font-weight 750
+    letter-spacing .16em
+    text-align left
+
+  .home-hero h1
+    margin 1rem 0 .85rem
+    color #202820
+    font-size clamp(2.1rem, 5vw, 3.25rem)
+    font-weight 760
+    letter-spacing -.055em
+    line-height 1.18
+
+  .home-lead
+    max-width 36rem
+    margin 0
+    color #5e6a60
+    font-size 1rem
+    line-height 1.95
+    text-align left
+
+  .home-actions
+    display flex
+    flex-wrap wrap
+    gap .7rem
+    margin-top 1.5rem
+
+  .home-button
+    display inline-flex
+    align-items center
+    gap .8rem
+    padding .72rem 1rem
+    border 1px solid #d8e0d7
+    border-radius 9px
+    background rgba(255,255,255,.76)
+    color #26372b
+    font-size .82rem
+    font-weight 650
+    text-decoration none
+    transition transform .18s ease, border-color .18s ease, background .18s ease
+    &:hover
+      transform translateY(-2px)
+      border-color #9bb6a1
+      background #fff
+
+  .home-button-primary
+    border-color var(--home-green)
+    background var(--home-green)
+    color #fff
+    &:hover
+      border-color #24553f
+      background #24553f
+      color #fff
+
+  .home-topics
+    display flex
+    flex-wrap wrap
+    gap .5rem
+    margin-top 2rem
+    span
+      padding .35rem .65rem
+      border 1px solid #dfe7dc
+      border-radius 999px
+      color #647067
+      background rgba(255,255,255,.56)
+      font-size .72rem
+
+  .home-section
+    margin 0 0 3.25rem
+
+  .home-section-heading
+    display flex
+    align-items end
+    justify-content space-between
+    gap 1rem
+    margin-bottom 1.15rem
+    h2
+      margin .35rem 0 0
+      color #202820
+      font-size 1.4rem
+      font-weight 750
+      letter-spacing -.035em
+    > p
+      margin 0 0 .15rem
+      color var(--home-muted)
+      font-size .8rem
+      text-align right
+
+  .home-entry-grid
+    display grid
+    grid-template-columns repeat(3, minmax(0, 1fr))
+    gap .85rem
+
+  .home-entry
+    position relative
+    display flex
+    min-height 205px
+    flex-direction column
+    padding 1.15rem
+    border 1px solid var(--home-line)
+    border-radius 14px
+    background #fff
+    text-decoration none
+    transition transform .2s ease, box-shadow .2s ease, border-color .2s ease
+    &:hover
+      transform translateY(-3px)
+      border-color #c8d7ca
+      box-shadow 0 12px 28px rgba(34, 55, 39, .07)
+      background #fff
+    h3
+      margin 1.4rem 0 .45rem
+      color #26352a
+      font-size 1rem
+      font-weight 750
+      text-decoration none
+    p
+      margin 0
+      color var(--home-muted)
+      font-size .8rem
+      line-height 1.8
+      text-align left
+    .home-entry-number
+      color #8a958b
+      font-size .63rem
+      font-weight 700
+      letter-spacing .12em
+    .home-entry-icon
+      position absolute
+      top 1rem
+      right 1rem
+      display grid
+      width 30px
+      height 30px
+      place-items center
+      border-radius 8px
+      background #f1f6f0
+      color var(--home-green)
+      font-size 1rem
+    .home-entry-link
+      margin-top auto
+      padding-top 1.1rem
+      color var(--home-green)
+      font-size .75rem
+      font-weight 700
+
+  .home-more
+    color var(--home-green)
+    font-size .78rem
+    font-weight 700
+    text-decoration none
+    &:hover
+      color #1f4c38
+
+  .home-post-list
+    margin 0
+    padding 0
+    border-top 1px solid var(--home-line)
+    list-style none
+
+  .home-post-item
+    display grid
+    grid-template-columns 6.5rem minmax(0, 1fr) 1rem
+    align-items center
+    gap .8rem
+    margin 0
+    padding .95rem .15rem
+    border-bottom 1px solid var(--home-line)
+    .home-post-date
+      color #899189
+      font-size .72rem
+      font-variant-numeric tabular-nums
+    > a
+      overflow hidden
+      color #303b32
+      font-size .88rem
+      font-weight 600
+      text-overflow ellipsis
+      white-space nowrap
+      text-decoration none
+      &:hover
+        color var(--home-green)
+        background none
+    .home-post-arrow
+      color #9ba59b
+      font-size .85rem
+
+  .home-note
+    display flex
+    align-items flex-start
+    gap 1rem
+    margin 0 0 2rem
+    padding 1.3rem 1.4rem
+    border 1px solid var(--home-line)
+    border-radius 14px
+    background #fafbf9
+    .home-note-mark
+      display grid
+      flex 0 0 34px
+      width 34px
+      height 34px
+      place-items center
+      border-radius 10px
+      background #e9f1e8
+      color var(--home-green)
+      font-size 1.1rem
+    .home-note-text
+      margin .35rem 0 0
+      color #2e3b30
+      font-size 1rem
+      font-weight 700
+      text-align left
+      span
+        display block
+        margin-top .35rem
+        color var(--home-muted)
+        font-size .78rem
+        font-weight 400
+
+@media (min-width: 540px)
+  .content.width
+    max-width 54rem
+
+@media (max-width: 700px)
+  .home-page
+    .home-hero
+      margin-top 1.5rem
+      padding 2rem 1.35rem 1.5rem
+      border-radius 16px
+    .home-entry-grid
+      grid-template-columns 1fr
+    .home-entry
+      min-height 170px
+    .home-section-heading
+      align-items flex-start
+      flex-direction column
+      > p
+        text-align left
+    .home-post-item
+      grid-template-columns 5.4rem minmax(0, 1fr) .75rem
+      gap .55rem
+      padding .85rem 0
+      .home-post-date
+        font-size .66rem
+      > a
+        font-size .8rem
+    .home-note
+      padding 1rem
