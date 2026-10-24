@@ -1644,3 +1644,272 @@ article.post .content blockquote blockquote
     grid-template-columns 1fr
   #archive .post-item
     min-height 0
+
+
+/* Refined note library and Mermaid diagrams */
+.archive-page .archive-intro
+  position relative
+  overflow hidden
+  margin 2.1rem 0 1.6rem
+  padding 2.25rem 2.2rem
+  border 1px solid #e0e8dd
+  border-radius 22px
+  background linear-gradient(125deg, #f6f9f3 0%, #edf4ec 60%, #f8faf6 100%)
+
+.archive-page .archive-intro:after
+  content '✳'
+  position absolute
+  right 1.6rem
+  top .5rem
+  color rgba(65, 111, 76, .12)
+  font-size 8rem
+  line-height 1
+
+.archive-page .archive-eyebrow
+  position relative
+  z-index 1
+  margin 0 0 .7rem
+  color #477a59
+  font-size .68rem
+  font-weight 750
+  letter-spacing .16em
+
+.archive-page .archive-intro h1
+  position relative
+  z-index 1
+  margin 0 0 .6rem
+  color #233529
+  font-size clamp(1.8rem, 4vw, 2.55rem)
+  font-weight 780
+  letter-spacing -.055em
+  line-height 1.2
+
+.archive-page .archive-intro > p:last-child
+  position relative
+  z-index 1
+  max-width 38rem
+  margin 0
+  color #657366
+  font-size .92rem
+  line-height 1.9
+
+#archive .post-list
+  margin: 0
+  padding: 0
+  list-style: none
+
+#archive .archive-year-heading
+  display block
+  margin 1.8rem 0 .2rem
+  padding-bottom .55rem
+  border-bottom 1px solid #e1e7df
+  color #315f49
+
+#archive .archive-year-heading h2
+  margin 0
+  color #315f49
+  font-size 1.2rem
+  font-weight 750
+  letter-spacing -.035em
+
+#archive .post-item
+  position relative
+  display flex
+  flex-direction column
+  align-items stretch
+  gap .7rem
+  min-width 0
+  min-height 170px
+  margin 0
+  padding 1.25rem
+  border 1px solid #e3e9e1
+  border-radius 16px
+  background #fff
+  box-shadow 0 5px 18px rgba(37, 57, 42, .035)
+  transition transform .2s ease, box-shadow .2s ease, border-color .2s ease
+
+#archive .post-item:hover
+  transform translateY(-3px)
+  border-color #b9cbb8
+  box-shadow 0 12px 28px rgba(37, 57, 42, .08)
+
+#archive .post-item .meta
+  color #859084
+  font-size .7rem
+  letter-spacing .04em
+
+#archive .post-item .archive-card-title
+  display block
+  color #26382c
+  font-size 1.04rem
+  font-weight 680
+  line-height 1.55
+
+#archive .post-item .posttitle,
+#archive .post-item .posttitle a
+  color #26382c
+  font-size 1.04rem
+  font-weight 680
+  line-height 1.55
+  text-decoration none
+
+#archive .post-item .posttitle a:hover
+  color #477a59
+
+#archive .archive-card-excerpt
+  margin 0
+  color #718073
+  font-size .82rem
+  line-height 1.8
+
+#archive .archive-card-more
+  margin-top auto
+  color #477a59
+  font-size .73rem
+  font-weight 700
+  letter-spacing .04em
+
+article.post
+  color #344237
+
+article.post > header
+  border-radius 18px
+  background linear-gradient(135deg, #f7faf6, #f0f5ef)
+  border 1px solid #e3eae1
+  padding 2rem 2.2rem
+
+article.post .post-eyebrow
+  margin 0 0 .75rem
+  color #477a59
+  font-size .67rem
+  font-weight 750
+  letter-spacing .15em
+
+article.post h1.posttitle
+  margin .2rem 0 .9rem
+  color #223328
+  font-size clamp(1.8rem, 4vw, 2.6rem)
+  font-weight 780
+  letter-spacing -.05em
+  line-height 1.3
+
+article.post .meta
+  color #788578
+  font-size .76rem
+
+article.post .content
+  color #39473d
+  font-size 1rem
+  line-height 2
+  overflow-wrap anywhere
+
+article.post .content h2
+  margin-top 2.6rem
+  padding-bottom .55rem
+  border-bottom 1px solid #e4eae2
+  color #2c5038
+  font-size 1.4rem
+  font-weight 750
+  letter-spacing -.035em
+
+article.post .content h3
+  margin-top 1.8rem
+  color #355d42
+  font-size 1.12rem
+  font-weight 700
+  text-decoration none
+
+article.post .content p
+  margin: 1rem 0
+
+article.post .content a
+  color #34734d
+  text-decoration-thickness 1px
+  text-underline-offset 3px
+
+article.post .content img
+  max-width 100%
+  height auto
+  border-radius 12px
+
+article.post .content table
+  display block
+  overflow-x auto
+  border-collapse separate
+  border-spacing 0
+  border 1px solid #e2e9e0
+  border-radius 12px
+
+article.post .content th
+  background #f1f6ef
+  color #31563a
+  border-bottom 1px solid #e2e9e0
+
+article.post .content td
+  padding .7rem .8rem
+  border-bottom 1px solid #edf0eb
+
+article.post .content blockquote
+  margin 1.5rem 0
+  padding 1.05rem 1.25rem
+  border 1px solid #dce7d9
+  border-left 4px solid #739477
+  border-radius 0 14px 14px 0
+  background linear-gradient(135deg, #f7faf5, #f0f5ee)
+  color #435747
+
+article.post .content pre
+  overflow-x auto
+  padding 1.1rem 1.25rem
+  border 1px solid #26392d
+  border-radius 12px
+  background #18251d
+  box-shadow 0 8px 20px rgba(25, 42, 30, .08)
+
+article.post .content pre code
+  color #e5eee5
+  background transparent
+
+article.post .content .mermaid
+  display flex
+  justify-content center
+  overflow-x auto
+  margin 1.5rem 0
+  padding 1.4rem
+  border 1px solid #e0e9de
+  border-radius 16px
+  background linear-gradient(145deg, #fbfdf9, #f2f7ef)
+  box-shadow 0 7px 22px rgba(37, 57, 42, .045)
+
+article.post .content .mermaid svg
+  display block
+  max-width 100%
+  height auto
+
+article.post .content .mermaid-error
+  padding 1rem
+  border 1px solid #e6c9c3
+  border-radius 12px
+  background #fff7f5
+  color #8a3d30
+  white-space pre-wrap
+
+@media (max-width: 760px)
+  .archive-page .archive-intro
+    margin 1.4rem 0 1.1rem
+    padding 1.6rem
+  .archive-page .archive-intro:after
+    right .4rem
+    top .4rem
+    font-size 5rem
+  #archive .post-list
+    grid-template-columns 1fr
+  #archive .post-item
+    min-height 0
+  article.post > header
+    padding 1.4rem
+  article.post .content
+    font-size .95rem
+  article.post .content .mermaid
+    justify-content flex-start
+    padding .8rem
