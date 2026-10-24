@@ -1541,3 +1541,106 @@ article.post .content code
     font-size .8rem
   .home-post-date
     font-size .65rem
+
+
+/* Knowledge cards: archive collection and Markdown note blocks */
+#archive .post-list
+  display grid
+  grid-template-columns repeat(2, minmax(0, 1fr))
+  gap 1rem
+  padding 0
+  list-style none
+
+#archive .archive-year-heading
+  grid-column 1 / -1
+  margin 1.7rem 0 .25rem
+  padding-bottom .65rem
+  border-bottom 1px solid #e1e7df
+  color #315f49
+  font-size 1.25rem
+  letter-spacing -.03em
+
+#archive .post-item
+  display flex
+  flex-direction column
+  align-items stretch
+  gap .8rem
+  min-width 0
+  min-height 175px
+  margin 0
+  padding 1.25rem
+  border 1px solid #e1e7df
+  border-radius 16px
+  background #fff
+  box-shadow 0 5px 18px rgba(37, 57, 42, .035)
+  transition transform .2s ease, box-shadow .2s ease, border-color .2s ease
+
+#archive .post-item:hover
+  transform translateY(-3px)
+  border-color #b9cbb8
+  box-shadow 0 12px 28px rgba(37, 57, 42, .08)
+
+#archive .post-item .meta
+  color #7d8a7d
+  font-size .72rem
+  letter-spacing .04em
+
+#archive .post-item > span
+  display block
+
+#archive .post-item .posttitle
+  color #26382c
+  font-size 1.05rem
+  font-weight 650
+  line-height 1.5
+  text-decoration none
+
+#archive .post-item .posttitle:hover
+  color #477a59
+
+#archive .archive-card-excerpt
+  margin 0
+  color #718073
+  font-size .83rem
+  line-height 1.8
+
+#archive .archive-card-more
+  margin-top auto
+  color #477a59
+  font-size .75rem
+  font-weight 650
+  letter-spacing .04em
+
+#archive .post-item .posttitle a
+  color inherit
+  text-decoration none
+
+#archive .post-item .posttitle a:hover
+  color #477a59
+
+article.post .content blockquote
+  position relative
+  margin 1.5rem 0
+  padding 1.15rem 1.3rem
+  border: 1px solid #dce7d9
+  border-left: 4px solid #739477
+  border-radius: 0 14px 14px 0
+  background: linear-gradient(135deg, #f7faf5, #f0f5ee)
+  color #435747
+
+article.post .content blockquote > :first-child
+  margin-top 0
+
+article.post .content blockquote > :last-child
+  margin-bottom 0
+
+article.post .content blockquote blockquote
+  margin .8rem 0
+  background #fff
+  border-color #e2e8df
+
+@media (max-width: 760px)
+  #archive .post-list
+    grid-template-columns 1fr
+  #archive .post-item
+    min-height 0
