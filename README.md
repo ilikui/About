@@ -67,6 +67,8 @@ npm run build
 
 The GitHub Actions workflow builds the static site and deploys the generated `public/` directory to GitHub Pages when changes are pushed to `main`. It can also be started manually from the **Actions** tab.
 
+Netlify (about.likui.info) builds from source as configured in `netlify.toml`: it runs `npm run clean && npm run build` on Node.js 22 and publishes the freshly generated `public/` directory.
+
 For deployment failures, check the workflow logs and confirm that **Settings → Pages → Build and deployment** is configured to use **GitHub Actions**.
 
 ## Repository map
