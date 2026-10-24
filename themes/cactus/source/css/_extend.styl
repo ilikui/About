@@ -807,3 +807,737 @@ $base-style
         font-size .64rem
       > a
         font-size .78rem
+
+
+// -----------------------------------------------------------------------------
+// Site-wide design system — editorial knowledge garden
+// -----------------------------------------------------------------------------
+:root
+  color-scheme light
+
+html
+  border-top 3px solid #315f49
+  scroll-behavior smooth
+
+body
+  background #f7f7f3
+  color #26332b
+  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+  font-size 15px
+  line-height 1.8
+  letter-spacing .005em
+
+.content.index.width.mx-auto.px2.my4
+  width calc(100% - 3rem)
+  max-width 1120px
+  margin 0 auto
+  padding 0
+  flex 1
+
+#header
+  display flex
+  align-items center
+  justify-content space-between
+  gap 2rem
+  width 100%
+  max-width none
+  margin 0 auto
+  padding 1.45rem 0 1.2rem
+  border-bottom 1px solid #e4e7df
+
+#header > a
+  display flex
+  align-items center
+  gap .8rem
+  min-width 0
+
+#header #logo
+  display grid
+  float none
+  flex 0 0 42px
+  width 42px
+  height 42px
+  margin 0
+  place-items center
+  border-radius 13px
+  background #315f49
+  filter none
+  -webkit-filter none
+
+#header #logo:after
+  content "K"
+  color #fff
+  font-size 20px
+  font-weight 800
+  letter-spacing -.06em
+
+#header #title h1
+  margin 0
+  color #24352b
+  font-size 1rem
+  font-weight 760
+  letter-spacing -.025em
+  line-height 1.35
+
+#header #title:after
+  content "PERSONAL KNOWLEDGE GARDEN"
+  display block
+  margin-top .18rem
+  color #8b948b
+  font-size .57rem
+  font-weight 700
+  letter-spacing .12em
+  line-height 1.4
+
+#header #nav
+  color #526257
+  font-size .78rem
+  font-weight 650
+  letter-spacing 0
+
+#header #nav ul
+  display flex
+  align-items center
+  gap .2rem
+
+#header #nav ul li
+  margin 0
+  padding 0
+  border 0
+
+#header #nav ul a
+  display inline-flex
+  align-items center
+  margin 0
+  padding .55rem .8rem
+  border-radius 8px
+  color #5f6b61
+  transition background .18s ease, color .18s ease
+
+#header #nav ul a:hover
+  color #234f3a
+  background #eaf0e8
+  text-decoration none
+
+#header #nav .icon
+  display none
+
+.home-page
+  padding-bottom 1rem
+
+.home-hero
+  display grid
+  grid-template-columns minmax(0, 1.55fr) minmax(230px, .8fr)
+  align-items center
+  gap 2rem
+  min-height 360px
+  margin 2.2rem 0 4rem
+  padding 3.2rem 3.4rem
+  border-color #e3e8df
+  border-radius 24px
+  background radial-gradient(circle at 85% 15%, rgba(203, 222, 200, .55), transparent 34%), linear-gradient(135deg, #f0f5ee 0%, #fbfcf8 72%)
+  box-shadow 0 18px 50px rgba(34, 54, 39, .035)
+
+.home-hero-copy
+  position relative
+  z-index 1
+
+.home-status-dot
+  display inline-block
+  width 7px
+  height 7px
+  margin-right .45rem
+  border-radius 50%
+  background #4e8b61
+  box-shadow 0 0 0 4px rgba(78, 139, 97, .12)
+
+.home-hero-aside
+  position relative
+  display flex
+  min-height 245px
+  flex-direction column
+  align-items flex-start
+  justify-content space-between
+  overflow hidden
+  padding 1.2rem 1.3rem
+  border 1px solid rgba(198, 213, 197, .8)
+  border-radius 18px
+  background rgba(255, 255, 255, .58)
+
+.home-aside-index, .home-aside-foot
+  color #879388
+  font-size .58rem
+  font-weight 750
+  letter-spacing .13em
+
+.home-orbit
+  position absolute
+  top 50%
+  right 1.25rem
+  width 145px
+  height 145px
+  transform translateY(-50%)
+  border 1px solid rgba(49, 95, 73, .22)
+  border-radius 50%
+
+.home-orbit:before, .home-orbit:after
+  position absolute
+  inset 17px
+  border 1px solid rgba(49, 95, 73, .18)
+  border-radius 50%
+  content ""
+
+.home-orbit:after
+  inset 36px
+
+.home-orbit span
+  position absolute
+  top 13px
+  left 45px
+  width 10px
+  height 10px
+  border-radius 50%
+  background #315f49
+  box-shadow 0 0 0 7px rgba(49, 95, 73, .1)
+
+.home-orbit i
+  position absolute
+  right 17px
+  bottom 29px
+  width 7px
+  height 7px
+  border-radius 50%
+  background #b9a57b
+
+.home-orbit b
+  position absolute
+  top 57px
+  left 17px
+  width 5px
+  height 5px
+  border-radius 50%
+  background #8baf8a
+
+.home-hero-aside > p
+  position relative
+  z-index 1
+  margin auto 0
+  color #34483a
+  font-family Georgia, "Times New Roman", serif
+  font-size 1.12rem
+  font-weight 600
+  line-height 1.8
+  text-align left
+
+.home-hero-aside > p em
+  color #66836b
+  font-weight 400
+
+.home-section
+  margin-bottom 4rem
+
+.home-section-heading
+  margin-bottom 1.35rem
+
+.home-section-heading h2
+  font-size 1.55rem
+  letter-spacing -.045em
+
+.home-heading-period
+  color #a1a99f
+  font-size .66rem
+  font-weight 700
+  letter-spacing .1em
+
+.home-entry-grid
+  gap 1rem
+
+.home-entry
+  min-height 225px
+  padding 1.4rem
+  border-color #e5e8e0
+  border-radius 16px
+  background #fff
+  box-shadow 0 4px 16px rgba(30, 48, 35, .018)
+
+.home-entry:hover
+  transform translateY(-4px)
+  border-color #c7d7c7
+  box-shadow 0 18px 38px rgba(30, 48, 35, .075)
+
+.home-entry-symbol
+  position absolute
+  top 1rem
+  right 1.2rem
+  display grid
+  width 38px
+  height 38px
+  place-items center
+  border-radius 12px
+  background #eef4ec
+  color #315f49
+  font-size 1.35rem
+
+.home-entry-knowledge .home-entry-symbol
+  background #f4f0e7
+  color #8b754d
+
+.home-entry-creation .home-entry-symbol
+  background #f2edf5
+  color #7b658a
+
+.home-entry h3
+  margin-top 1.5rem
+  font-size 1.06rem
+
+.home-entry p
+  font-size .83rem
+  line-height 1.9
+
+.home-entry-link
+  display flex
+  justify-content space-between
+  align-items center
+
+.home-post-list
+  border-top 1px solid #e2e6df
+
+.home-post-item
+  padding 1.1rem .35rem
+  border-bottom 1px solid #e7e9e3
+  transition padding .18s ease
+
+.home-post-item:hover
+  padding-left .7rem
+  padding-right .7rem
+  background #f0f3ed
+
+.home-post-item > a
+  font-size .91rem
+  font-weight 620
+
+.home-bottom-grid
+  display grid
+  grid-template-columns repeat(2, minmax(0, 1fr))
+  gap 1rem
+  margin: 0 0 2rem
+
+.home-resource
+  position relative
+  display flex
+  min-height 165px
+  flex-direction column
+  align-items flex-start
+  padding 1.35rem
+  border 1px solid #e4e8e0
+  border-radius 16px
+  background #fff
+  text-decoration none
+  transition transform .2s ease, box-shadow .2s ease
+
+.home-resource:hover
+  transform translateY(-3px)
+  box-shadow 0 14px 30px rgba(30, 48, 35, .06)
+  background #fff
+
+.home-resource-label
+  color #7c8c7d
+  font-size .61rem
+  font-weight 750
+  letter-spacing .13em
+
+.home-resource strong
+  margin .55rem 0 .2rem
+  color #2b3a2e
+  font-size 1.05rem
+
+.home-resource > span:not(.home-resource-label)
+  max-width 24rem
+  color #758075
+  font-size .8rem
+  line-height 1.75
+
+.home-resource > b
+  position absolute
+  top 1.3rem
+  right 1.35rem
+  color #477456
+
+.home-manifesto
+  grid-column 1 / -1
+  position relative
+  padding 2rem 1.5rem
+  border-top 1px solid #dfe5dc
+  text-align center
+
+.home-manifesto-mark
+  display block
+  height 2rem
+  color #9ab39b
+  font-family Georgia, serif
+  font-size 3rem
+  line-height 1
+
+.home-manifesto p
+  margin .25rem 0
+  color #2d4935
+  font-family Georgia, "Songti SC", serif
+  font-size 1.45rem
+  font-weight 700
+  letter-spacing .04em
+  text-align center
+
+.home-manifesto > span:last-child
+  color #818c81
+  font-size .8rem
+
+// Article and static pages
+article.post, #archive, body > .content .post
+  color #354137
+
+article.post
+  max-width 760px
+  margin 2.5rem auto 4rem
+  padding 0
+
+article.post > header
+  margin-bottom 2rem
+  padding: 2rem 2.2rem 1.7rem
+  border 1px solid #e4e8e0
+  border-radius 18px
+  background linear-gradient(135deg, #f0f5ee, #fbfcf9)
+
+article.post header .posttitle
+  margin 0 0 .8rem
+  color #26392d
+  font-size clamp(1.8rem, 4vw, 2.5rem)
+  font-weight 780
+  letter-spacing -.045em
+  line-height 1.3
+
+article.post header .meta
+  display flex
+  flex-wrap wrap
+  gap .55rem
+  align-items center
+  margin 0
+  color #7c887d
+  font-size .75rem
+
+article.post header .meta *
+  color #718072
+  font-size .75rem
+
+article.post .content
+  color #3c493f
+  font-size 1rem
+  line-height 2
+
+article.post .content p
+  margin 1.15rem 0
+  text-align: left
+
+article.post .content h1,
+article.post .content h2,
+article.post .content h3
+  position relative
+  margin-top 2.5rem
+  margin-bottom 1rem
+  color #263b2d
+  font-weight 760
+  letter-spacing -.025em
+  text-decoration none
+
+article.post .content h1
+  font-size 1.7rem
+
+article.post .content h2
+  padding-bottom .55rem
+  border-bottom 1px solid #e2e8df
+  font-size 1.35rem
+
+article.post .content h2:before
+  content none
+
+article.post .content h3
+  font-size 1.1rem
+
+article.post .content a
+  color #326749
+  text-decoration underline
+  text-decoration-color #b4cbb7
+  text-underline-offset 3px
+  background none
+
+article.post .content a:hover
+  color #1f4c34
+  background none
+
+article.post .content blockquote
+  margin 1.5rem 0
+  padding 1rem 1.25rem
+  border-left 3px solid #7caa81
+  border-radius 0 10px 10px 0
+  background #f0f4ee
+  color #5b6d5e
+
+article.post .content img
+  border-radius 12px
+  box-shadow 0 8px 28px rgba(30, 48, 35, .08)
+
+article.post .content table
+  overflow hidden
+  border-collapse collapse
+  border: 1px solid #e1e7df
+  border-radius 10px
+  font-size .88rem
+
+article.post .content th
+  background #edf3eb
+  color #344c39
+  border-bottom 1px solid #dce5da
+  padding .75rem
+
+article.post .content td
+  padding .7rem
+  border-bottom 1px solid #e7ebe5
+
+article.post .content pre,
+article.post .content .highlight
+  border 1px solid #e0e6de
+  border-radius 12px
+  background #202b24
+  box-shadow 0 8px 22px rgba(25, 40, 29, .07)
+
+article.post .content pre code
+  color #edf3ec
+
+article.post .content code
+  border 0
+  border-radius 5px
+  padding .15em .35em
+  background #edf2eb
+  color #3b6247
+  font-size .88em
+
+#archive
+  max-width 800px
+  margin 2.5rem auto 4rem
+  padding 2rem 2.2rem
+  border 1px solid #e4e8e0
+  border-radius 18px
+  background #fff
+
+#archive:before
+  content "FIELD NOTES / ARCHIVE"
+  display block
+  margin-bottom .45rem
+  color #6f8b72
+  font-size .65rem
+  font-weight 800
+  letter-spacing .16em
+
+#archive:after
+  content "所有值得留下的想法，都从一次记录开始。"
+  display block
+  margin-top 1.5rem
+  padding-top 1.25rem
+  border-top 1px solid #e8ebe5
+  color #899389
+  font-size .8rem
+
+#archive h2
+  margin 2rem 0 .8rem
+  padding-bottom .5rem
+  border-bottom 1px solid #e6eae3
+  color #315b40
+  font-size 1.15rem
+  font-weight 800
+
+#archive .post-list
+  margin 0
+  padding 0
+
+#archive .post-item
+  display grid
+  grid-template-columns 7rem minmax(0, 1fr)
+  gap 1rem
+  align-items center
+  margin 0
+  padding .85rem .5rem
+  border-bottom 1px solid #f0f1ed
+  transition background .18s ease
+
+#archive .post-item:hover
+  background #f5f7f3
+
+#archive .post-item .meta
+  min-width 0
+  margin 0
+  color #8a9489
+  font-size .75rem
+
+#archive .post-item a
+  color #354338
+  font-size .9rem
+  font-weight 620
+  text-decoration none
+  background none
+
+#archive .post-item a:hover
+  color #2f7048
+  text-decoration none
+  background none
+
+#footer
+  display flex
+  justify-content space-between
+  gap 1rem
+  align-items center
+  width calc(100% - 3rem)
+  max-width 1120px
+  margin 3rem auto 0
+  padding 1.25rem 0 1.8rem
+  border-top 1px solid #e3e7df
+  color #899389
+  font-size .7rem
+  text-align left
+
+#footer a
+  color #758176
+  text-decoration none
+
+#footer a:hover
+  color #315f49
+
+#footer li
+  margin-right .7rem
+  border-right 0
+
+#footer li a
+  margin-right .7rem
+
+.pagination
+  display flex
+  justify-content center
+  align-items center
+  gap .8rem
+  margin-top 2rem
+  color #7b887c
+  font-size .8rem
+
+.pagination a
+  display grid
+  width 36px
+  height 36px
+  place-items center
+  border 1px solid #e0e7de
+  border-radius 10px
+  background #f6f8f4
+  color #315f49
+  text-decoration none
+
+.pagination a:hover
+  background #eaf1e8
+
+@media (max-width: 760px)
+  .content.index.width.mx-auto.px2.my4
+    width calc(100% - 2rem)
+  #header
+    align-items flex-start
+    gap 1rem
+    padding 1rem 0
+  #header #title:after
+    font-size .5rem
+    letter-spacing .08em
+  #header #nav ul
+    gap 0
+  #header #nav ul a
+    padding .5rem .55rem
+    font-size .72rem
+  .home-hero
+    grid-template-columns 1fr
+    gap 1.4rem
+    min-height 0
+    margin 1.4rem 0 3rem
+    padding 2rem
+  .home-hero-aside
+    min-height 165px
+  .home-orbit
+    width 120px
+    height 120px
+  .home-entry-grid
+    grid-template-columns 1fr
+  .home-entry
+    min-height 0
+  .home-entry h3
+    margin-top 1rem
+  .home-section-heading
+    align-items flex-start
+    flex-direction column
+  .home-section-heading > p
+    text-align left
+  .home-bottom-grid
+    grid-template-columns 1fr
+  .home-manifesto
+    grid-column auto
+  article.post
+    margin 1.5rem auto 3rem
+  article.post > header
+    padding 1.5rem
+  article.post .content
+    font-size .96rem
+  #archive
+    margin 1.5rem auto 3rem
+    padding 1.3rem
+  #archive .post-item
+    grid-template-columns 5.8rem minmax(0, 1fr)
+    gap .6rem
+  #footer
+    width calc(100% - 2rem)
+    align-items flex-start
+    flex-direction column
+    gap .3rem
+
+@media (max-width: 480px)
+  #header
+    align-items center
+  #header #nav ul li
+    display none
+  #header #nav ul li.icon
+    display inline-block
+  #header #nav ul li.icon a
+    padding .5rem
+  #header #nav ul.responsive
+    position absolute
+    z-index 20
+    top 4.7rem
+    right 1rem
+    display flex
+    flex-direction column
+    align-items stretch
+    min-width 150px
+    padding .5rem
+    border 1px solid #e0e7de
+    border-radius 12px
+    background #fff
+    box-shadow 0 14px 35px rgba(30, 48, 35, .12)
+  #header #nav ul.responsive li
+    display block
+  #header #nav ul.responsive li a
+    display block
+    padding .65rem .8rem
+  .home-hero
+    padding 1.4rem
+    border-radius 18px
+  .home-hero h1
+    font-size 2.2rem
+  .home-lead
+    font-size .9rem
+  .home-post-item
+    grid-template-columns 5.3rem minmax(0, 1fr) .7rem
+    gap .45rem
+  .home-post-item > a
+    font-size .8rem
+  .home-post-date
+    font-size .65rem
